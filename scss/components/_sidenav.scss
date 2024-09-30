@@ -1,0 +1,84 @@
+// Override Bootstrap color system
+$orange: #bd5d38;
+// Override Bootstrap default state colors
+$primary: $orange;
+
+
+// 
+// Sidenav
+// 
+
+#sideNav {
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    .navbar-nav .nav-item .nav-link {
+        font-size: 1.4rem;
+        font-weight: 800;
+        letter-spacing: 0.15rem;
+        text-transform: uppercase;
+    }
+
+    .navbar-toggler {
+        &:focus {
+            outline-color: lighten($primary, 15%);
+        }
+    }
+}
+
+
+// Import Bootstrap SCSS
+@import '../../node_modules/bootstrap/scss/bootstrap';
+
+@include media-breakpoint-up(lg) {
+    #sideNav {
+        padding-left: 0;
+        padding-right: 0;
+        text-align: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        display: flex;
+        flex-direction: column;
+
+        width: $sidebar-base-width;
+        height: 100vh;
+
+        .navbar-brand {
+            display: flex;
+
+            margin: 4rem auto 0;
+            padding: 0.5rem;
+
+            .img-profile {
+                max-width: 15rem;
+                max-height: 15rem;
+                border: 0.5rem solid fade-out(rgb(223, 213, 213), 0.8);
+            }
+        }
+
+        .navbar-collapse {
+            display: flex;
+            align-items: flex-start;
+            flex-grow: 0;
+
+            width: 100%;
+            margin-bottom: auto;
+
+            .navbar-nav {
+                flex-direction: column;
+
+                width: 100%;
+
+                .nav-item {
+                    display: block;
+
+                    .nav-link {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+}

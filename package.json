@@ -1,0 +1,25 @@
+{
+  "name": "my-site-portfolio",
+  "version": "1.0.0",
+  "description": "My \"about-me\" site for people get to know me better",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "build-css": "node-sass scss/styles.scss public/css/style.css",
+    "watch-css": "node-sass scss/styles.scss public/css/style.css --watch"
+  },
+  "type": "module",
+  "author": "mateus-lazarus",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "express": "^4.21.0",
+    "helmet": "^8.0.0",
+    "nodemon": "^3.1.7",
+    "path": "^0.12.7",
+    "pug": "^3.0.3"
+  },
+  "devDependencies": {
+    "node-sass": "^9.0.0"
+  }
+}
