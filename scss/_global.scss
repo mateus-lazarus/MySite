@@ -1,0 +1,92 @@
+// Pre-state grayscale colors used in other variables
+$gray-800: #343a40;
+$gray-600: #60676e;
+
+// Override Bootstrap color system
+$orange: #bd5d38;
+
+// Override Bootstrap default state colors
+$primary: $orange;
+
+// Spacing variable to set the sidebar base width
+$sidebar-base-width: 17rem;
+
+// Spacing variable to add padding to the top of the body element that matches the height of the navbar
+$navbar-base-height: 3.375rem;
+
+
+
+// 
+// Global
+// 
+
+body {
+    padding-top: $navbar-base-height;
+    color: $gray-600;
+}
+
+
+// Import Bootstrap SCSS
+@import '../node_modules/bootstrap/scss/bootstrap';
+
+@include media-breakpoint-up(lg) {
+    body {
+        padding-top: 0;
+        padding-left: $sidebar-base-width;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-transform: uppercase;
+}
+
+h1 {
+    line-height: 1;
+}
+
+p.lead {
+    font-size: 1.15rem;
+    font-weight: 400;
+}
+
+.subheading {
+    font-family: $headings-font-family;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+
+.background-custom-primary {
+    background-color: rgb(18,115,183) !important;
+}
+
+.text-custom-primary {
+    color: rgb(18,115,183) !important;
+}
+
+.text-custom-data {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.text-custom-enterprise-name {
+    font-size: 2rem !important;
+}
+
+.text-custom-role-name {
+    font-size: 2.25rem !important;
+}
+
+a {
+    color: #df1010;
+    text-decoration: none;
+}
+
+.text-custom-description {
+    font-size: 1.12rem;
+}
