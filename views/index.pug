@@ -7,9 +7,9 @@ html(lang='en')
         meta(name='description', content='Mateus Lazarus \'About Me Page\'')
         meta(name='author', content='Mateus Lazarus')
 
-        title About Me - Resume
+        title About Me - Resume - Mateus Lazarus
 
-        link(rel='icon', type='image/x-icon', href='assets/img/favicon.ico')
+        link(rel='icon', type='image/x-icon', href='https://raw.githubusercontent.com/mateus-lazarus/MySite/refs/heads/main/public/assets/img/favicon.ico')
 
         // Font Awesome icons (free version)
         script(src='https://use.fontawesome.com/releases/v6.3.0/js/all.js', crossorigin='anonymous')
@@ -18,10 +18,98 @@ html(lang='en')
         link(href='https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700', rel='stylesheet', type='text/css')
         link(href='https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i', rel='stylesheet', type='text/css')
 
-        // Core theme CSS (includes Bootstrap)
-        link(rel="stylesheet" href="css/style.css")
+        // Style
+        style.
+            #content {
+                display: none; /* Hide the content by default */
+            }
 
-        style(nonce=nonce)
+            /* Loading Spinner Styles */
+            #loading {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+                display: flex; /* Out by default */
+                justify-content: center; /* Center the spinner */
+                align-items: center; /* Center the spinner */
+                z-index: 1000; /* High z-index to appear on top */
+            }
+    
+            .spinner {
+                border-top: 3vh solid #3498db; /* Blue */
+                border-radius: 50%;
+                width: 24vh; /* Size of the spinner */
+                height: 24vh; /* Size of the spinner */
+                animation: spin 1s linear infinite; /* Animation */
+            }
+    
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+
+        // Fetch the css archive
+        script.
+            // JavaScript for fetching data and showing/hiding the spinner
+            document.addEventListener('DOMContentLoaded', function() {
+                // Show the loading spinner
+                document.getElementById('loading').style.display = 'flex';
+    
+                // Fetch the style.html file and extract the CSS
+                // Core theme CSS (includes Bootstrap)
+                fetch('https://raw.githubusercontent.com/mateus-lazarus/MySite/refs/heads/vercel/vercel-configs/public/css/style.html')
+                    .then(response => response.text())
+                    .then(data => {
+                        // Create a new style element
+                        const style = document.createElement('style');
+                
+                        // Extract the CSS between <style> tags
+                        const cssMatch = data.match(/<style[^>]*>([\s\S]*?)<\/style>/);
+                        if (cssMatch && cssMatch[1]) {
+                            style.innerHTML = cssMatch[1]; // Set the inner HTML to the extracted CSS
+                            document.head.appendChild(style); // Append the style to the head
+                        }
+                    })
+                    .catch(error => console.error('Error loading style:', error))
+                    .finally(() => {
+                        // Hide the loading spinner
+                        setTimeout(() => {
+                            document.getElementById('loading').remove(); // Remove the spinner
+                            document.getElementById('content').style.display = 'block'; // Show the content
+                        }, 750);
+                    });
+            });        
+
+        // Core theme JS
+        script.
+            window.addEventListener('DOMContentLoaded', event => {
+
+                // Activate Bootstrap scrollspy on the main nav element
+                const sideNav = document.body.querySelector('#sideNav');
+                if (sideNav) {
+                    new bootstrap.ScrollSpy(document.body, {
+                        target: '#sideNav',
+                        rootMargin: '0px 0px -40%',
+                    });
+                };
+
+                // Collapse responsive navbar when toggler is visible
+                const navbarToggler = document.body.querySelector('.navbar-toggler');
+                const responsiveNavItems = [].slice.call(
+                    document.querySelectorAll('#navbarResponsive .nav-link')
+                );
+                responsiveNavItems.map(function (responsiveNavItem) {
+                    responsiveNavItem.addEventListener('click', () => {
+                        if (window.getComputedStyle(navbarToggler).display !== 'none') {
+                            navbarToggler.click();
+                        }
+                    });
+                });
+
+            });
 
     body#page-top
         // Navigation
@@ -254,7 +342,7 @@ html(lang='en')
 
                     a(href="https://github.com/mateus-lazarus/Challenges")
                         h3 Dsa Challenges' Solutions
-                        img.img-fluid.rounded.mb-5(src="./../assets/img/dsa.png")
+                        img.img-fluid.rounded.mb-5(src="https://raw.githubusercontent.com/mateus-lazarus/MySite/refs/heads/main/public/assets/img/dsa.png")
 
                     a(href="https://github.com/mateus-lazarus/Projeto_WebScraping_Steam")
                         h3 Web Scraping Project
@@ -262,35 +350,3 @@ html(lang='en')
                     
                     a(href="https://github.com/mateus-lazarus/Boilerplates")
                         h3 Boilerplates Of Common Projects And Configurations
-
-
-        // Bootstrap core JS
-        script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js')
-
-        // Core theme JS
-        script.
-            window.addEventListener('DOMContentLoaded', event => {
-
-                // Activate Bootstrap scrollspy on the main nav element
-                const sideNav = document.body.querySelector('#sideNav');
-                if (sideNav) {
-                    new bootstrap.ScrollSpy(document.body, {
-                        target: '#sideNav',
-                        rootMargin: '0px 0px -40%',
-                    });
-                };
-
-                // Collapse responsive navbar when toggler is visible
-                const navbarToggler = document.body.querySelector('.navbar-toggler');
-                const responsiveNavItems = [].slice.call(
-                    document.querySelectorAll('#navbarResponsive .nav-link')
-                );
-                responsiveNavItems.map(function (responsiveNavItem) {
-                    responsiveNavItem.addEventListener('click', () => {
-                        if (window.getComputedStyle(navbarToggler).display !== 'none') {
-                            navbarToggler.click();
-                        }
-                    });
-                });
-
-            });
