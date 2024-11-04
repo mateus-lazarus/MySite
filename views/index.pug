@@ -9,7 +9,7 @@ html(lang='en')
 
         title About Me - Resume - Mateus Lazarus
 
-        link(rel='icon', type='image/x-icon', href='https://raw.githubusercontent.com/mateus-lazarus/MySite/refs/heads/main/public/assets/img/favicon.ico')
+        link(rel='icon', type='image/x-icon', href='assets/img/favicon.ico')
 
         // Font Awesome icons (free version)
         script(src='https://use.fontawesome.com/releases/v6.3.0/js/all.js', crossorigin='anonymous')
@@ -60,7 +60,7 @@ html(lang='en')
     
                 // Fetch the style.html file and extract the CSS
                 // Core theme CSS (includes Bootstrap)
-                fetch('https://raw.githubusercontent.com/mateus-lazarus/MySite/refs/heads/vercel/vercel-configs/public/css/style.html')
+                fetch('css/style.html')
                     .then(response => response.text())
                     .then(data => {
                         // Create a new style element
@@ -112,241 +112,252 @@ html(lang='en')
             });
 
     body#page-top
-        // Navigation
-        nav#sideNav.navbar.navbar-expand-lg.navbar-dark.background-custom-primary.fixed-top
-            a.navbar-brand.js-scroll-trigger(href='#page-top')
-                span.d-block.d-lg-none Mateus Lazarus
-                span.d-none.d-lg-block
-                    img.img-fluid.img-profile.rounded-circle.mx-auto.mb-2(src='https://media.licdn.com/dms/image/v2/C4D03AQEe8cAzkm_rew/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1667992430186?e=1731542400&v=beta&t=i_OYRN16WYafaWfkgPqoJmGDs_ZY4s5U37rPFc7y0V4', alt='...')
-            button.navbar-toggler(type='button', data-bs-toggle='collapse', data-bs-target='#navbarResponsive', aria-controls='navbarResponsive', aria-expanded='false', aria-label='Toggle navigation')
-                span.navbar-toggler-icon
-            #navbarResponsive.collapse.navbar-collapse
-                ul.navbar-nav
-                    li.nav-item
-                        a.nav-link.js-scroll-trigger(href='#about') About
-                    li.nav-item
-                        a.nav-link.js-scroll-trigger(href='#experience') Experience
-                    li.nav-item
-                        a.nav-link.js-scroll-trigger(href='#education') Education
-                    li.nav-item
-                        a.nav-link.js-scroll-trigger(href='#skills') Skills
-                    li.nav-item
-                        a.nav-link.js-scroll-trigger(href='#portfolio') Portfolio
-            #navbarResponsive.collapse.navbar-collapse.sticky-bottom.mb-0
-                ul.navbar-nav
-                    li.nav-item
-                        a.nav-link.js-scroll-trigger(href='/login') Login →
+        // Loading spinner
+        div#loading
+            div.spinner
+        section#content
+            // Navigation
+            nav#sideNav.navbar.navbar-expand-lg.navbar-dark.background-custom-primary.fixed-top
+                a.navbar-brand.js-scroll-trigger(href='#page-top')
+                    span.d-block.d-lg-none Mateus Lazarus
+                    span.d-none.d-lg-block
+                        img.img-fluid.img-profile.rounded-circle.mx-auto.mb-2(src='https://media.licdn.com/dms/image/v2/C4D03AQEe8cAzkm_rew/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1667992430186?e=1731542400&v=beta&t=i_OYRN16WYafaWfkgPqoJmGDs_ZY4s5U37rPFc7y0V4', alt='...')
+                button.navbar-toggler(type='button', data-bs-toggle='collapse', data-bs-target='#navbarResponsive', aria-controls='navbarResponsive', aria-expanded='false', aria-label='Toggle navigation')
+                    span.navbar-toggler-icon
+                #navbarResponsive.collapse.navbar-collapse
+                    ul.navbar-nav
+                        li.nav-item
+                            a.nav-link.js-scroll-trigger(href='#about') About
+                        li.nav-item
+                            a.nav-link.js-scroll-trigger(href='#experience') Experience
+                        li.nav-item
+                            a.nav-link.js-scroll-trigger(href='#education') Education
+                        li.nav-item
+                            a.nav-link.js-scroll-trigger(href='#skills') Skills
+                        li.nav-item
+                            a.nav-link.js-scroll-trigger(href='#portfolio') Portfolio
+                #navbarResponsive.collapse.navbar-collapse.sticky-bottom.mb-0
+                    ul.navbar-nav
+                        li.nav-item
+                            a.nav-link.js-scroll-trigger(href='/login') Login →
 
-        // Page Content
-        .container-fluid.p-0
+            // Page Content
+            .container-fluid.p-0
 
-            // About
-            section#about.resume-section
-                .resume-section-content
-                    h1.mb-0
-                        | Mateus 
-                        span.text-custom-primary Lazarus
-                    .subheading
-                        | Back-end Software Engineer
-                    .subheading.mb-5
-                        | São Paulo, SP - Brazil · 
-                        a(href='mailto:contatemateuslazarus@gmail.com') contatemateuslazarus@gmail.com
-                    p.lead.mb-5
-                        | Software engineer with experience in implementing and maintaining cloud solutions for companies 
-                        strong
-                            | dealing with high demand and reliability needs.
-                    p.lead.mb-5
-                        | Proficient in coding 
-                        strong
-                            | best practices, design patterns, microservices environments, Domain-Driven Design (DDD), DevOps concepts, Test-Driven Development (TDD), 
-                        | and monitoring, providing a significant advantage in delivering high-quality development work.
-                    .social-icons
-                        a.social-icon(href='https://www.linkedin.com/in/mateus-lazarus/')
-                            i.fab.fa-linkedin-in
-                        a.social-icon(href='https://github.com/mateus-lazarus')
-                            i.fab.fa-github
+                // About
+                section#about.resume-section
+                    .resume-section-content
+                        h1.mb-0
+                            | Mateus 
+                            span.text-custom-primary Lazarus
+                        .subheading
+                            | Back-end Software Engineer
+                        .subheading.mb-5
+                            | São Paulo, SP - Brazil · 
+                            a(href='mailto:contatemateuslazarus@gmail.com') contatemateuslazarus@gmail.com
+                        p.lead.mb-5
+                            | Software engineer with experience in implementing and maintaining cloud solutions for companies 
+                            strong
+                                | dealing with high demand and reliability needs.
+                        p.lead.mb-5
+                            | Proficient in coding 
+                            strong
+                                | best practices, design patterns, microservices environments, Domain-Driven Design (DDD), DevOps concepts, Test-Driven Development (TDD), 
+                            | and monitoring, providing a significant advantage in delivering high-quality development work.
+                        .social-icons
+                            a.social-icon(href='https://www.linkedin.com/in/mateus-lazarus/')
+                                i.fab.fa-linkedin-in
+                            a.social-icon(href='https://github.com/mateus-lazarus')
+                                i.fab.fa-github
 
-            hr.m-0
+                hr.m-0
 
-            // Experience
-            section#experience.resume-section
-               .resume-section-content
-                    h2.mb-5 Experience
+                // Experience
+                section#experience.resume-section
+                    .resume-section-content
+                        h2.mb-5 Experience
 
-                    .d-flex.flex-column.flex-md-row.justify-content-between.mb-2
-                        .flex-grow-1
-                            h3.mb-0.text-custom-role-name Software Engineer
-                            .subheading.mb-3.text-custom-enterprise-name
-                                | Stone Co. 
-                                a.js-scroll-trigger(href='https://www.nasdaq.com/market-activity/stocks/stne') (Nasdaq listed Enterprise)
-                        .flex-shrink-0
-                            span.text-custom-primary.text-custom-data April 2022 - Present (#{timeInStone})
-                    .d-flex.flex-column.flex-md-row.justify-content-between.mb-5
-                        .flex-grow-1.text-custom-description
-                            p
-                                | Hired to work with the Credit Sector, the most profitable product and highly critical to the company financial health. Where I have acquired experience in:
-                            ul
-                                li
-                                    p 
-                                    | A culture of cutting-edge technology and best practices is fostered through well-defined and documented processes. This includes non-technical aspects such as Modern Agile and Scrum rituals, as well as features related to Governance, Compliance, and DevOps.
-                                li
-                                    p 
-                                    | I actively participated in the implementation of Onboarding and Breakevens processes, focusing on monitoring and observability using New Relic. I presented the outcomes to the entire Credit department.
-                                li
-                                    p 
-                                    | Involved in the development of a new application from scratch, encompassing architecture discussions, code standards, and the creation of monitoring, unit, functional, and load tests. Today, this application handles over 2 million daily requests and boasts a maximum maturity level on SonarCloud with its extensive codebase.
-                                li
-                                    p 
-                                    | Generated documentation for investigations and processes utilizing Backstage and ClickUp. Implemented automations to expedite the construction of the local environment, currently leveraging Jira and contributing to story point estimation.
-                                li
-                                    p 
-                                    | Successfully delivered core features to the product, contributing to increased business and customer knowledge. Actively engaged in handling various incidents of different magnitudes with excellence, earning internal recognition.
-                                li
-                                    p 
-                                    | Demonstrated a high commitment to deliverables and value generated through projects, all while maintaining a focus on platform development to achieve the best time-to-market in development.
-                                li
-                                    p 
-                                    | Took responsibility for over a dozen functional tests, hundreds of unit tests, and the implementation of integration tests, achieving an impressive 8 seconds to execute more than 50 tests on the service.
-                                li
-                                    p 
-                                    | Frequently assisted new team members in navigating our application flows, understanding business logics, and identifying dependencies, consistently providing support with a warm and helpful approach.
+                        .d-flex.flex-column.flex-md-row.justify-content-between.mb-2
+                            .flex-grow-1
+                                h3.mb-0.text-custom-role-name Software Engineer
+                                .subheading.mb-3.text-custom-enterprise-name
+                                    | Stone Co. 
+                                    a.js-scroll-trigger(href='https://www.nasdaq.com/market-activity/stocks/stne') (Nasdaq listed Enterprise)
+                            .flex-shrink-0
+                                span.text-custom-primary.text-custom-data April 2022 - Present (#{timeInStone})
+                        .d-flex.flex-column.flex-md-row.justify-content-between.mb-5
+                            .flex-grow-1.text-custom-description
+                                p
+                                    | Hired to work with the Credit Sector, the most profitable product and highly critical to the company financial health. Where I have acquired experience in:
+                                ul
+                                    li
+                                        p 
+                                        | A culture of cutting-edge technology and best practices is fostered through well-defined and documented processes. This includes non-technical aspects such as Modern Agile and Scrum rituals, as well as features related to Governance, Compliance, and DevOps.
+                                    li
+                                        p 
+                                        | I actively participated in the implementation of Onboarding and Breakevens processes, focusing on monitoring and observability using New Relic. I presented the outcomes to the entire Credit department.
+                                    li
+                                        p 
+                                        | Involved in the development of a new application from scratch, encompassing architecture discussions, code standards, and the creation of monitoring, unit, functional, and load tests. Today, this application handles over 2 million daily requests and boasts a maximum maturity level on SonarCloud with its extensive codebase.
+                                    li
+                                        p 
+                                        | Generated documentation for investigations and processes utilizing Backstage and ClickUp. Implemented automations to expedite the construction of the local environment, currently leveraging Jira and contributing to story point estimation.
+                                    li
+                                        p 
+                                        | Successfully delivered core features to the product, contributing to increased business and customer knowledge. Actively engaged in handling various incidents of different magnitudes with excellence, earning internal recognition.
+                                    li
+                                        p 
+                                        | Demonstrated a high commitment to deliverables and value generated through projects, all while maintaining a focus on platform development to achieve the best time-to-market in development.
+                                    li
+                                        p 
+                                        | Took responsibility for over a dozen functional tests, hundreds of unit tests, and the implementation of integration tests, achieving an impressive 8 seconds to execute more than 50 tests on the service.
+                                    li
+                                        p 
+                                        | Frequently assisted new team members in navigating our application flows, understanding business logics, and identifying dependencies, consistently providing support with a warm and helpful approach.
 
-                    .d-flex.flex-column.flex-md-row.justify-content-between.mb-2
-                        .flex-grow-1
-                            h3.mb-0.text-custom-role-name Fullstack Developer
-                            .subheading.mb-3.text-custom-enterprise-name Lazarus Development
-                        .flex-shrink-0
-                            span.text-custom-primary.text-custom-data August 2020 - March 2022 (1 year 8 months)
-                    .d-flex.flex-column.flex-md-row.justify-content-between.mb-5
-                        .flex-grow-1.text-custom-description
-                            h3.mb-0.text-custom-role-name 
-                            .subheading.mb-3.text-custom-enterprise-name 
-                            p
-                                | As a seasoned freelance developer, I have actively contributed to projects characterized by their low maintenance requirements and substantial impact on fostering customer loyalty to the associated brands.
-                                br
-                                br
-                                | Utilizing technologies such as PHP, Relational Database, and Javascript, I laid a solid foundation for acquiring a profound understanding of the paramount aspect in development – creating tangible value for both the business and its clientele.
-                                br
-                                br
-                                | Among my notable achievements is the pivotal role I played in enhancing various facets of operations for Atenas Fit Oficial, a longstanding local enterprise with over a decade of presence in the fitness and health industry. In this capacity, I focused on optimizing CRM services, fortifying entrance security protocols, and implementing measures to closely monitor disengaged and unpaid customers, thereby contributing significantly to the overall operational efficiency and client satisfaction within the organization.
+                        .d-flex.flex-column.flex-md-row.justify-content-between.mb-2
+                            .flex-grow-1
+                                h3.mb-0.text-custom-role-name Fullstack Developer
+                                .subheading.mb-3.text-custom-enterprise-name Lazarus Development
+                            .flex-shrink-0
+                                span.text-custom-primary.text-custom-data August 2020 - March 2022 (1 year 8 months)
+                        .d-flex.flex-column.flex-md-row.justify-content-between.mb-5
+                            .flex-grow-1.text-custom-description
+                                h3.mb-0.text-custom-role-name 
+                                .subheading.mb-3.text-custom-enterprise-name 
+                                p
+                                    | As a seasoned freelance developer, I have actively contributed to projects characterized by their low maintenance requirements and substantial impact on fostering customer loyalty to the associated brands.
+                                    br
+                                    br
+                                    | Utilizing technologies such as PHP, Relational Database, and Javascript, I laid a solid foundation for acquiring a profound understanding of the paramount aspect in development – creating tangible value for both the business and its clientele.
+                                    br
+                                    br
+                                    | Among my notable achievements is the pivotal role I played in enhancing various facets of operations for Atenas Fit Oficial, a longstanding local enterprise with over a decade of presence in the fitness and health industry. In this capacity, I focused on optimizing CRM services, fortifying entrance security protocols, and implementing measures to closely monitor disengaged and unpaid customers, thereby contributing significantly to the overall operational efficiency and client satisfaction within the organization.
 
-            hr.m-0
+                hr.m-0
 
-            // Education
-            section#education.resume-section
-                .resume-section-content.mb-5
-                    h2.mb-5 Education
+                // Education
+                section#education.resume-section
+                    .resume-section-content.mb-5
+                        h2.mb-5 Education
 
-                    .d-flex.flex-column.flex-md-row.justify-content-between.mb-1
-                        .flex-grow-1
-                            h3.mb-0.text-custom-enterprise-name University of Estácio de Sá
-                            .subheading.mb-3.text-custom-role-name Bachelor of Computer Science
-                        .flex-shrink-0
-                            span.text-custom-primary.text-custom-data April 2022 - December 2024
-                    .d-flex.flex-column.flex-md-row.justify-content-between.mb-5
-                        .flex-grow-1.text-custom-description
-                            div Bachelor of Computer Science with 3 years of length.
-                            p GPA: 9.2 out of 10
+                        .d-flex.flex-column.flex-md-row.justify-content-between.mb-1
+                            .flex-grow-1
+                                h3.mb-0.text-custom-enterprise-name University of Estácio de Sá
+                                .subheading.mb-3.text-custom-role-name Bachelor of Computer Science
+                            .flex-shrink-0
+                                span.text-custom-primary.text-custom-data April 2022 - December 2024
+                        .d-flex.flex-column.flex-md-row.justify-content-between.mb-5
+                            .flex-grow-1.text-custom-description
+                                div Bachelor of Computer Science with 3 years of length.
+                                p GPA: 9.2 out of 10
 
-                    .d-flex.flex-column.flex-md-row.justify-content-between.mb-5
-                        .flex-grow-1
-                            h3.mb-0.text-custom-role-name Desenvolvedor.io (A Microsoft MVP's School of Programming)
-                            .subheading.mb-3.text-custom-enterprise-name Fundamentals of Software Architecture
-                            a.js-scroll-trigger(href='https://desenvolvedor.io/certificados/6fe869c9-48d9-4db7-9f18-4870f298aa73/validar') Certificate
+                        .d-flex.flex-column.flex-md-row.justify-content-between.mb-5
+                            .flex-grow-1
+                                h3.mb-0.text-custom-role-name Desenvolvedor.io (A Microsoft MVP's School of Programming)
+                                .subheading.mb-3.text-custom-enterprise-name Fundamentals of Software Architecture
+                                a.js-scroll-trigger(href='https://desenvolvedor.io/certificados/6fe869c9-48d9-4db7-9f18-4870f298aa73/validar') Certificate
 
-            hr.m-3
+                hr.m-3
 
-            // Skills
-            section#skills.resume-section
-                .resume-section-content
-                    h2.mb-5 Skills
-                    .subheading.mb-3.text-custom-role-name Programming Languages & Tools
-                    ul.text-custom-description
-                        li
+                // Skills
+                section#skills.resume-section
+                    .resume-section-content
+                        h2.mb-5 Skills
+                        .subheading.mb-3.text-custom-role-name Programming Languages & Tools
+                        ul.text-custom-description
+                            li
+                                p 
+                                    strong Techs: 
+                                    | C#, Javascript (mostly for DSA challenges)
+                            li
+                                p
+                                    strong Frameworks: 
+                                    | .Net, NodeJs
+                            li
+                                p 
+                                    strong Automated Testing: 
+                                    | Runscope, SpecFlow + DevContainers
+                            li
+                                p 
+                                    strong Logging: 
+                                    | Grafana Loki, Splunk
+                            li
+                                p 
+                                    strong Datalake: 
+                                    | Google BigQuery
+                            li
+                                p 
+                                    strong Observability: 
+                                    | New Relic, PingDom, Datadog
+                            li
+                                p 
+                                    strong Infrastructure as Code (IaC): 
+                                    | Terraform
+                            li
+                                p 
+                                    strong Databases: 
+                                    | MySQL, MongoDB
+                            li
+                                p 
+                                    strong Cloud: 
+                                    | Azure Ecosystem, AWS
+                        .subheading.mb-3.text-custom-role-name Workflow
+                        ul.fa-ul.mb-0.text-custom-description
+                            li
+                                span.fa-li
+                                    i.fas.fa-check
+                                | Agile Development & Scrum
+                            li
+                                span.fa-li
+                                    i.fas.fa-check
+                                | Observability & Debugging
+                            li
+                                span.fa-li
+                                    i.fas.fa-check
+                                | Domain-Driven Design (DDD) & Microservices
+                            li
+                                span.fa-li
+                                    i.fas.fa-check
+                                | Automated Testing & Continuous Integration
+
+                hr.m-0
+
+                // Portfolio
+                section#portfolio.resume-section
+                    .resume-section-content
+                        h2.mb-1 Portfolio
+                        p.mb-5
+                            | My general projects and studies without NDA (Non-Disclosure Agreement) restrictions.
+                        div.mb-5
+                            div
+                                h3 My accounts on DSA platforms
+                                h4 Leetcode
+                                p(dir="auto")
+                                    a(target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/9d54fe6a2265833ceaaa3ac19f4714fde31f11b831ed28fed1c336dbae86e0de/68747470733a2f2f6c656574636172642e6a61636f626c696e2e636f6f6c2f6d61746575732d6c617a617275733f7468656d653d6461726b26666f6e743d5469726f25323042616e676c61")
+                                        img.img-fluid(src="https://camo.githubusercontent.com/9d54fe6a2265833ceaaa3ac19f4714fde31f11b831ed28fed1c336dbae86e0de/68747470733a2f2f6c656574636172642e6a61636f626c696e2e636f6f6c2f6d61746575732d6c617a617275733f7468656d653d6461726b26666f6e743d5469726f25323042616e676c61" alt="LeetCode Stats" data-canonical-src="https://leetcard.jacoblin.cool/mateus-lazarus?theme=dark&amp;font=Tiro%20Bangla" style="max-width: 100%;")
+
+                            div
+                                h4 CodeWars
+                                a(target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/37d77d108e2d04827162cfafb9db833df960aac1d4e8b95e5e89594af4460909/68747470733a2f2f7777772e636f6465776172732e636f6d2f75736572732f6d61746575732d6c617a617275732f6261646765732f6c61726765" style="font-size: 1rem;")
+                                    img.img-fluid(alt="CodeWars profile" src="https://camo.githubusercontent.com/37d77d108e2d04827162cfafb9db833df960aac1d4e8b95e5e89594af4460909/68747470733a2f2f7777772e636f6465776172732e636f6d2f75736572732f6d61746575732d6c617a617275732f6261646765732f6c61726765" data-canonical-src="https://www.codewars.com/users/mateus-lazarus/badges/large" style="width: 70%;")
+                        
+                        h2 Github Projects
+
+                        a(href="https://github.com/mateus-lazarus/Challenges")
+                            h3 Dsa Challenges' Solutions
+                            img.img-fluid.rounded.mb-5(src="assets/img/dsa.png")
+
+                        a(href="https://github.com/mateus-lazarus/Projeto_WebScraping_Steam")
+                            h3 Web Scraping Project
+                            video.img-fluid.rounded.mb-5(controls='' muted='' src="assets/videos/projeto_steam.mp4")
+                        
+                        a(href="https://github.com/mateus-lazarus/Boilerplates")
+                            h3 Boilerplates Of Common Projects And Configurations
+
+                        br
+
+                        a(href="/mock-endpoints-tool")
+                            h3 Mock Endpoints Tool (Click here to try)
                             p 
-                                strong Techs: 
-                                | C#, Javascript (mostly for DSA challenges)
-                        li
-                            p
-                                strong Frameworks: 
-                                | .Net, NodeJs
-                        li
-                            p 
-                                strong Automated Testing: 
-                                | Runscope, SpecFlow + DevContainers
-                        li
-                            p 
-                                strong Logging: 
-                                | Grafana Loki, Splunk
-                        li
-                            p 
-                                strong Datalake: 
-                                | Google BigQuery
-                        li
-                            p 
-                                strong Observability: 
-                                | New Relic, PingDom, Datadog
-                        li
-                            p 
-                                strong Infrastructure as Code (IaC): 
-                                | Terraform
-                        li
-                            p 
-                                strong Databases: 
-                                | MySQL, MongoDB
-                        li
-                            p 
-                                strong Cloud: 
-                                | Azure Ecosystem, AWS
-                    .subheading.mb-3.text-custom-role-name Workflow
-                    ul.fa-ul.mb-0.text-custom-description
-                        li
-                            span.fa-li
-                                i.fas.fa-check
-                            | Agile Development & Scrum
-                        li
-                            span.fa-li
-                                i.fas.fa-check
-                            | Observability & Debugging
-                        li
-                            span.fa-li
-                                i.fas.fa-check
-                            | Domain-Driven Design (DDD) & Microservices
-                        li
-                            span.fa-li
-                                i.fas.fa-check
-                            | Automated Testing & Continuous Integration
-
-            hr.m-0
-
-            // Portfolio
-            section#portfolio.resume-section
-                .resume-section-content
-                    h2.mb-1 Portfolio
-                    p.mb-5
-                        | My general projects and studies without NDA (Non-Disclosure Agreement) restrictions.
-                    div.mb-5
-                        div
-                            h3 My accounts on DSA platforms
-                            h4 Leetcode
-                            p(dir="auto")
-                                a(target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/9d54fe6a2265833ceaaa3ac19f4714fde31f11b831ed28fed1c336dbae86e0de/68747470733a2f2f6c656574636172642e6a61636f626c696e2e636f6f6c2f6d61746575732d6c617a617275733f7468656d653d6461726b26666f6e743d5469726f25323042616e676c61")
-                                    img.img-fluid(src="https://camo.githubusercontent.com/9d54fe6a2265833ceaaa3ac19f4714fde31f11b831ed28fed1c336dbae86e0de/68747470733a2f2f6c656574636172642e6a61636f626c696e2e636f6f6c2f6d61746575732d6c617a617275733f7468656d653d6461726b26666f6e743d5469726f25323042616e676c61" alt="LeetCode Stats" data-canonical-src="https://leetcard.jacoblin.cool/mateus-lazarus?theme=dark&amp;font=Tiro%20Bangla" style="max-width: 100%;")
-
-                        div
-                            h4 CodeWars
-                            a(target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/37d77d108e2d04827162cfafb9db833df960aac1d4e8b95e5e89594af4460909/68747470733a2f2f7777772e636f6465776172732e636f6d2f75736572732f6d61746575732d6c617a617275732f6261646765732f6c61726765" style="font-size: 1rem;")
-                                img.img-fluid(alt="CodeWars profile" src="https://camo.githubusercontent.com/37d77d108e2d04827162cfafb9db833df960aac1d4e8b95e5e89594af4460909/68747470733a2f2f7777772e636f6465776172732e636f6d2f75736572732f6d61746575732d6c617a617275732f6261646765732f6c61726765" data-canonical-src="https://www.codewars.com/users/mateus-lazarus/badges/large" style="width: 70%;")
-                    
-                    h2 Github Projects
-
-                    a(href="https://github.com/mateus-lazarus/Challenges")
-                        h3 Dsa Challenges' Solutions
-                        img.img-fluid.rounded.mb-5(src="https://raw.githubusercontent.com/mateus-lazarus/MySite/refs/heads/main/public/assets/img/dsa.png")
-
-                    a(href="https://github.com/mateus-lazarus/Projeto_WebScraping_Steam")
-                        h3 Web Scraping Project
-                        video.img-fluid.rounded.mb-5(controls='' muted='' src="https://user-images.githubusercontent.com/52336611/154860696-660a7e52-4b0a-4c7d-b4b2-8e4272a66a1e.mp4")
-                    
-                    a(href="https://github.com/mateus-lazarus/Boilerplates")
-                        h3 Boilerplates Of Common Projects And Configurations
+                                a(href="https://www.linkedin.com/posts/activity-7254160525826150402-3kAP?utm_source=share&utm_medium=member_android") LinkedIn Post Teaching About It

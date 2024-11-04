@@ -1,421 +1,85 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <style>
-            #content {
-                display: none; /* Hide the content by default */
-            }
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="description" content="Mateus Lazarus 'About Me Page'"><meta name="author" content="Mateus Lazarus"><title>About Me - Resume - Mateus Lazarus</title><link rel="icon" type="image/x-icon" href="assets/img/favicon.ico"><!-- Font Awesome icons (free version)--><script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script><!-- Google fonts--><link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css"><link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css"><!-- Style--><style>#content {
+    display: none; /* Hide the content by default */
+}
 
-            /* Loading Spinner Styles */
-            #loading {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
-                display: flex; /* Out by default */
-                justify-content: center; /* Center the spinner */
-                align-items: center; /* Center the spinner */
-                z-index: 1000; /* High z-index to appear on top */
-            }
+/* Loading Spinner Styles */
+#loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+    display: flex; /* Out by default */
+    justify-content: center; /* Center the spinner */
+    align-items: center; /* Center the spinner */
+    z-index: 1000; /* High z-index to appear on top */
+}
+
+.spinner {
+    border-top: 3vh solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 24vh; /* Size of the spinner */
+    height: 24vh; /* Size of the spinner */
+    animation: spin 1s linear infinite; /* Animation */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+</style><!-- Fetch the css archive--><script>// JavaScript for fetching data and showing/hiding the spinner
+document.addEventListener('DOMContentLoaded', function() {
+    // Show the loading spinner
+    document.getElementById('loading').style.display = 'flex';
+
+    // Fetch the style.html file and extract the CSS
+    // Core theme CSS (includes Bootstrap)
+    fetch('css/style.html')
+        .then(response => response.text())
+        .then(data => {
+            // Create a new style element
+            const style = document.createElement('style');
     
-            .spinner {
-                border-top: 3vh solid #3498db; /* Blue */
-                border-radius: 50%;
-                width: 24vh; /* Size of the spinner */
-                height: 24vh; /* Size of the spinner */
-                animation: spin 1s linear infinite; /* Animation */
+            // Extract the CSS between <style> tags
+            const cssMatch = data.match(/<style[^>]*>([\s\S]*?)<\/style>/);
+            if (cssMatch && cssMatch[1]) {
+                style.innerHTML = cssMatch[1]; // Set the inner HTML to the extracted CSS
+                document.head.appendChild(style); // Append the style to the head
             }
-    
-            @keyframes spin {
-                0% { transform: rotate(0deg); }
-                100% { transform: rotate(360deg); }
+        })
+        .catch(error => console.error('Error loading style:', error))
+        .finally(() => {
+            // Hide the loading spinner
+            setTimeout(() => {
+                document.getElementById('loading').remove(); // Remove the spinner
+                document.getElementById('content').style.display = 'block'; // Show the content
+            }, 750);
+        });
+});        
+</script><!-- Core theme JS--><script>window.addEventListener('DOMContentLoaded', event => {
+
+    // Activate Bootstrap scrollspy on the main nav element
+    const sideNav = document.body.querySelector('#sideNav');
+    if (sideNav) {
+        new bootstrap.ScrollSpy(document.body, {
+            target: '#sideNav',
+            rootMargin: '0px 0px -40%',
+        });
+    };
+
+    // Collapse responsive navbar when toggler is visible
+    const navbarToggler = document.body.querySelector('.navbar-toggler');
+    const responsiveNavItems = [].slice.call(
+        document.querySelectorAll('#navbarResponsive .nav-link')
+    );
+    responsiveNavItems.map(function (responsiveNavItem) {
+        responsiveNavItem.addEventListener('click', () => {
+            if (window.getComputedStyle(navbarToggler).display !== 'none') {
+                navbarToggler.click();
             }
-        </style>
-        <script>
-            // JavaScript for fetching data and showing/hiding the spinner
-            document.addEventListener('DOMContentLoaded', function() {
-                // Show the loading spinner
-                document.getElementById('loading').style.display = 'flex';
-    
-                // Fetch the style.html file and extract the CSS
-                // Core theme CSS (includes Bootstrap)
-                fetch('https://raw.githubusercontent.com/mateus-lazarus/MySite/refs/heads/vercel/vercel-configs/public/css/style.html')
-                    .then(response => response.text())
-                    .then(data => {
-                        // Create a new style element
-                        const style = document.createElement('style');
-                
-                        // Extract the CSS between <style> tags
-                        const cssMatch = data.match(/<style[^>]*>([\s\S]*?)<\/style>/);
-                        if (cssMatch && cssMatch[1]) {
-                            style.innerHTML = cssMatch[1]; // Set the inner HTML to the extracted CSS
-                            document.head.appendChild(style); // Append the style to the head
-                        }
-                    })
-                    .catch(error => console.error('Error loading style:', error))
-                    .finally(() => {
-                        // Hide the loading spinner
-                        setTimeout(() => {
-                            document.getElementById('loading').remove(); // Remove the spinner
-                            document.getElementById('content').style.display = 'block'; // Show the content
-                        }, 750);
-                    });
-            });
-        </script>
+        });
+    });
 
-
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="Mateus Lazarus 'About Me Page'">
-        <meta name="author" content="Mateus Lazarus">
-        <title>About Me - Resume - Mateus Lazarus</title>
-        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css">
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script>
-            window.addEventListener('DOMContentLoaded', event => {
-
-                // Activate Bootstrap scrollspy on the main nav element
-                const sideNav = document.body.querySelector('#sideNav');
-                if (sideNav) {
-                    new bootstrap.ScrollSpy(document.body,{
-                        target: '#sideNav',
-                        rootMargin: '0px 0px -40%',
-                    });
-                }
-                ;
-                // Collapse responsive navbar when toggler is visible
-                const navbarToggler = document.body.querySelector('.navbar-toggler');
-                const responsiveNavItems = [].slice.call(document.querySelectorAll('#navbarResponsive .nav-link'));
-                responsiveNavItems.map(function(responsiveNavItem) {
-                    responsiveNavItem.addEventListener('click', () => {
-                        if (window.getComputedStyle(navbarToggler).display !== 'none') {
-                            navbarToggler.click();
-                        }
-                    }
-                    );
-                });
-
-            }
-            );
-        </script>
-    </head>
-    <body id="page-top">
-        <div id="loading">
-            <div class="spinner"></div>
-        </div>
-        <section id="content">
-            <!-- Navigation-->
-            <nav class="navbar navbar-expand-lg navbar-dark background-custom-primary fixed-top" id="sideNav">
-                <a class="navbar-brand js-scroll-trigger" href="#page-top">
-                    <span class="d-block d-lg-none">Mateus Lazarus</span>
-                    <span class="d-none d-lg-block">
-                        <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="https://media.licdn.com/dms/image/v2/C4D03AQEe8cAzkm_rew/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1667992430186?e=1731542400&amp;v=beta&amp;t=i_OYRN16WYafaWfkgPqoJmGDs_ZY4s5U37rPFc7y0V4" alt="...">
-                    </span>
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="#about">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="#experience">Experience</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="#education">Education</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="#skills">Skills</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="collapse navbar-collapse sticky-bottom mb-0" id="navbarResponsive">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger" href="/login">Login →</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-            <!-- Page Content-->
-            <div class="container-fluid p-0">
-                <!-- About-->
-                <section class="resume-section" id="about">
-                    <div class="resume-section-content">
-                        <h1 class="mb-0">
-                            Mateus <span class="text-custom-primary">Lazarus</span>
-                        </h1>
-                        <div class="subheading">Back-end Software Engineer</div>
-                        <div class="subheading mb-5">
-                            São Paulo, SP - Brazil · <a href="mailto:contatemateuslazarus@gmail.com">contatemateuslazarus@gmail.com</a>
-                        </div>
-                        <p class="lead mb-5">
-                            Software engineer with experience in implementing and maintaining cloud solutions for companies <strong>dealing with high demand and reliability needs.</strong>
-                        </p>
-                        <p class="lead mb-5">
-                            Proficient in coding <strong>best practices, design patterns, microservices environments, Domain-Driven Design (DDD), DevOps concepts, Test-Driven Development (TDD), </strong>
-                            and monitoring, providing a significant advantage in delivering high-quality development work.
-                        </p>
-                        <div class="social-icons">
-                            <a class="social-icon" href="https://www.linkedin.com/in/mateus-lazarus/">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                            <a class="social-icon" href="https://github.com/mateus-lazarus">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
-                    </div>
-                </section>
-                <hr class="m-0">
-                <!-- Experience-->
-                <section class="resume-section" id="experience">
-                    <div class="resume-section-content">
-                        <h2 class="mb-5">Experience</h2>
-                        <div class="d-flex flex-column flex-md-row justify-content-between mb-2">
-                            <div class="flex-grow-1">
-                                <h3 class="mb-0 text-custom-role-name">Software Engineer</h3>
-                                <div class="subheading mb-3 text-custom-enterprise-name">
-                                    Stone Co. <a class="js-scroll-trigger" href="https://www.nasdaq.com/market-activity/stocks/stne">(Nasdaq listed Enterprise)</a>
-                                </div>
-                            </div>
-                            <div class="flex-shrink-0">
-                                <span class="text-custom-primary text-custom-data">April 2022 - Present (2 years, 6 months, and 0 days)</span>
-                            </div>
-                        </div>
-                        <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                            <div class="flex-grow-1 text-custom-description">
-                                <p>Hired to work with the Credit Sector, the most profitable product and highly critical to the company financial health. Where I have acquired experience in:</p>
-                                <ul>
-                                    <li>
-                                        <p></p>
-                                        A culture of cutting-edge technology and best practices is fostered through well-defined and documented processes. This includes non-technical aspects such as Modern Agile and Scrum rituals, as well as features related to Governance, Compliance, and DevOps.
-                                    </li>
-                                    <li>
-                                        <p></p>
-                                        I actively participated in the implementation of Onboarding and Breakevens processes, focusing on monitoring and observability using New Relic. I presented the outcomes to the entire Credit department.
-                                    </li>
-                                    <li>
-                                        <p></p>
-                                        Involved in the development of a new application from scratch, encompassing architecture discussions, code standards, and the creation of monitoring, unit, functional, and load tests. Today, this application handles over 2 million daily requests and boasts a maximum maturity level on SonarCloud with its extensive codebase.
-                                    </li>
-                                    <li>
-                                        <p></p>
-                                        Generated documentation for investigations and processes utilizing Backstage and ClickUp. Implemented automations to expedite the construction of the local environment, currently leveraging Jira and contributing to story point estimation.
-                                    </li>
-                                    <li>
-                                        <p></p>
-                                        Successfully delivered core features to the product, contributing to increased business and customer knowledge. Actively engaged in handling various incidents of different magnitudes with excellence, earning internal recognition.
-                                    </li>
-                                    <li>
-                                        <p></p>
-                                        Demonstrated a high commitment to deliverables and value generated through projects, all while maintaining a focus on platform development to achieve the best time-to-market in development.
-                                    </li>
-                                    <li>
-                                        <p></p>
-                                        Took responsibility for over a dozen functional tests, hundreds of unit tests, and the implementation of integration tests, achieving an impressive 8 seconds to execute more than 50 tests on the service.
-                                    </li>
-                                    <li>
-                                        <p></p>
-                                        Frequently assisted new team members in navigating our application flows, understanding business logics, and identifying dependencies, consistently providing support with a warm and helpful approach.
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="d-flex flex-column flex-md-row justify-content-between mb-2">
-                            <div class="flex-grow-1">
-                                <h3 class="mb-0 text-custom-role-name">Fullstack Developer</h3>
-                                <div class="subheading mb-3 text-custom-enterprise-name">Lazarus Development</div>
-                            </div>
-                            <div class="flex-shrink-0">
-                                <span class="text-custom-primary text-custom-data">August 2020 - March 2022 (1 year 8 months)</span>
-                            </div>
-                        </div>
-                        <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                            <div class="flex-grow-1 text-custom-description">
-                                <h3 class="mb-0 text-custom-role-name"></h3>
-                                <div class="subheading mb-3 text-custom-enterprise-name"></div>
-                                <p>
-                                    As a seasoned freelance developer, I have actively contributed to projects characterized by their low maintenance requirements and substantial impact on fostering customer loyalty to the associated brands.<br>
-                                    <br>
-                                    Utilizing technologies such as PHP, Relational Database, and Javascript, I laid a solid foundation for acquiring a profound understanding of the paramount aspect in development – creating tangible value for both the business and its clientele.<br>
-                                    <br>Among my notable achievements is the pivotal role I played in enhancing various facets of operations for Atenas Fit Oficial, a longstanding local enterprise with over a decade of presence in the fitness and health industry. In this capacity, I focused on optimizing CRM services, fortifying entrance security protocols, and implementing measures to closely monitor disengaged and unpaid customers, thereby contributing significantly to the overall operational efficiency and client satisfaction within the organization.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <hr class="m-0">
-                <!-- Education-->
-                <section class="resume-section" id="education">
-                    <div class="resume-section-content mb-5">
-                        <h2 class="mb-5">Education</h2>
-                        <div class="d-flex flex-column flex-md-row justify-content-between mb-1">
-                            <div class="flex-grow-1">
-                                <h3 class="mb-0 text-custom-enterprise-name">University of Estácio de Sá</h3>
-                                <div class="subheading mb-3 text-custom-role-name">Bachelor of Computer Science</div>
-                            </div>
-                            <div class="flex-shrink-0">
-                                <span class="text-custom-primary text-custom-data">April 2022 - December 2024</span>
-                            </div>
-                        </div>
-                        <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                            <div class="flex-grow-1 text-custom-description">
-                                <div>Bachelor of Computer Science with 3 years of length.</div>
-                                <p>GPA: 9.2 out of 10</p>
-                            </div>
-                        </div>
-                        <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                            <div class="flex-grow-1">
-                                <h3 class="mb-0 text-custom-role-name">Desenvolvedor.io (A Microsoft MVP's School of Programming)</h3>
-                                <div class="subheading mb-3 text-custom-enterprise-name">Fundamentals of Software Architecture</div>
-                                <a class="js-scroll-trigger" href="https://desenvolvedor.io/certificados/6fe869c9-48d9-4db7-9f18-4870f298aa73/validar">Certificate</a>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <hr class="m-3">
-                <!-- Skills-->
-                <section class="resume-section" id="skills">
-                    <div class="resume-section-content">
-                        <h2 class="mb-5">Skills</h2>
-                        <div class="subheading mb-3 text-custom-role-name">Programming Languages & Tools</div>
-                        <ul class="text-custom-description">
-                            <li>
-                                <p>
-                                    <strong>Techs: </strong>
-                                    C#, Javascript (mostly for DSA challenges)
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <strong>Frameworks: </strong>
-                                    .Net, NodeJs
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <strong>Automated Testing: </strong>
-                                    Runscope, SpecFlow + DevContainers
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <strong>Logging: </strong>
-                                    Grafana Loki, Splunk
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <strong>Datalake: </strong>
-                                    Google BigQuery
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <strong>Observability: </strong>
-                                    New Relic, PingDom, Datadog
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <strong>Infrastructure as Code (IaC): </strong>
-                                    Terraform
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <strong>Databases: </strong>
-                                    MySQL, MongoDB
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    <strong>Cloud: </strong>
-                                    Azure Ecosystem, AWS
-                                </p>
-                            </li>
-                        </ul>
-                        <div class="subheading mb-3 text-custom-role-name">Workflow</div>
-                        <ul class="fa-ul mb-0 text-custom-description">
-                            <li>
-                                <span class="fa-li">
-                                    <i class="fas fa-check"></i>
-                                </span>
-                                Agile Development & Scrum
-                            </li>
-                            <li>
-                                <span class="fa-li">
-                                    <i class="fas fa-check"></i>
-                                </span>
-                                Observability & Debugging
-                            </li>
-                            <li>
-                                <span class="fa-li">
-                                    <i class="fas fa-check"></i>
-                                </span>
-                                Domain-Driven Design (DDD) & Microservices
-                            </li>
-                            <li>
-                                <span class="fa-li">
-                                    <i class="fas fa-check"></i>
-                                </span>
-                                Automated Testing & Continuous Integration
-                            </li>
-                        </ul>
-                    </div>
-                </section>
-                <hr class="m-0">
-                <!-- Portfolio-->
-                <section class="resume-section" id="portfolio">
-                    <div class="resume-section-content">
-                        <h2 class="mb-1">Portfolio</h2>
-                        <p class="mb-5">My general projects and studies without NDA (Non-Disclosure Agreement) restrictions.</p>
-                        <div class="mb-5">
-                            <div>
-                                <h3>My accounts on DSA platforms</h3>
-                                <h4>Leetcode</h4>
-                                <p dir="auto">
-                                    <a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/9d54fe6a2265833ceaaa3ac19f4714fde31f11b831ed28fed1c336dbae86e0de/68747470733a2f2f6c656574636172642e6a61636f626c696e2e636f6f6c2f6d61746575732d6c617a617275733f7468656d653d6461726b26666f6e743d5469726f25323042616e676c61">
-                                        <img class="img-fluid" src="https://camo.githubusercontent.com/9d54fe6a2265833ceaaa3ac19f4714fde31f11b831ed28fed1c336dbae86e0de/68747470733a2f2f6c656574636172642e6a61636f626c696e2e636f6f6c2f6d61746575732d6c617a617275733f7468656d653d6461726b26666f6e743d5469726f25323042616e676c61" alt="LeetCode Stats" data-canonical-src="https://leetcard.jacoblin.cool/mateus-lazarus?theme=dark&amp;amp;font=Tiro%20Bangla" style="max-width: 100%;">
-                                    </a>
-                                </p>
-                            </div>
-                            <div>
-                                <h4>CodeWars</h4>
-                                <a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/37d77d108e2d04827162cfafb9db833df960aac1d4e8b95e5e89594af4460909/68747470733a2f2f7777772e636f6465776172732e636f6d2f75736572732f6d61746575732d6c617a617275732f6261646765732f6c61726765" style="font-size: 1rem;">
-                                    <img class="img-fluid" alt="CodeWars profile" src="https://camo.githubusercontent.com/37d77d108e2d04827162cfafb9db833df960aac1d4e8b95e5e89594af4460909/68747470733a2f2f7777772e636f6465776172732e636f6d2f75736572732f6d61746575732d6c617a617275732f6261646765732f6c61726765" data-canonical-src="https://www.codewars.com/users/mateus-lazarus/badges/large" style="width: 70%;">
-                                </a>
-                            </div>
-                        </div>
-                        <h2>Github Projects</h2>
-                        <a href="https://github.com/mateus-lazarus/Challenges">
-                            <h3>Dsa Challenges' Solutions</h3>
-                            <img class="img-fluid rounded mb-5" src="./../assets/img/dsa.png">
-                        </a>
-                        <a href="https://github.com/mateus-lazarus/Projeto_WebScraping_Steam">
-                            <h3>Web Scraping Project</h3>
-                            <video class="img-fluid rounded mb-5" controls="" muted="" src="https://user-images.githubusercontent.com/52336611/154860696-660a7e52-4b0a-4c7d-b4b2-8e4272a66a1e.mp4"></video>
-                        </a>
-                        <a href="https://github.com/mateus-lazarus/Boilerplates">
-                            <h3>Boilerplates Of Common Projects And Configurations</h3>
-                        </a>
-                    </div>
-                </section>
-            </div>
-        </section>
-    </body>
-</html>
+});
+</script></head><body id="page-top"><!-- Loading spinner--><div id="loading"><div class="spinner"></div></div><section id="content"><!-- Navigation--><nav class="navbar navbar-expand-lg navbar-dark background-custom-primary fixed-top" id="sideNav"><a class="navbar-brand js-scroll-trigger" href="#page-top"><span class="d-block d-lg-none">Mateus Lazarus</span><span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="https://media.licdn.com/dms/image/v2/C4D03AQEe8cAzkm_rew/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1667992430186?e=1731542400&amp;v=beta&amp;t=i_OYRN16WYafaWfkgPqoJmGDs_ZY4s5U37rPFc7y0V4" alt="..."></span></a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="navbarResponsive"><ul class="navbar-nav"><li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li><li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">Experience</a></li><li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">Education</a></li><li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">Skills</a></li><li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a></li></ul></div><div class="collapse navbar-collapse sticky-bottom mb-0" id="navbarResponsive"><ul class="navbar-nav"><li class="nav-item"><a class="nav-link js-scroll-trigger" href="/login">Login →</a></li></ul></div></nav><!-- Page Content--><div class="container-fluid p-0"><!-- About--><section class="resume-section" id="about"><div class="resume-section-content"><h1 class="mb-0">Mateus <span class="text-custom-primary">Lazarus</span></h1><div class="subheading">Back-end Software Engineer</div><div class="subheading mb-5">São Paulo, SP - Brazil · <a href="mailto:contatemateuslazarus@gmail.com">contatemateuslazarus@gmail.com</a></div><p class="lead mb-5">Software engineer with experience in implementing and maintaining cloud solutions for companies <strong>dealing with high demand and reliability needs.</strong></p><p class="lead mb-5">Proficient in coding <strong>best practices, design patterns, microservices environments, Domain-Driven Design (DDD), DevOps concepts, Test-Driven Development (TDD), </strong>and monitoring, providing a significant advantage in delivering high-quality development work.</p><div class="social-icons"><a class="social-icon" href="https://www.linkedin.com/in/mateus-lazarus/"><i class="fab fa-linkedin-in"></i></a><a class="social-icon" href="https://github.com/mateus-lazarus"><i class="fab fa-github"></i></a></div></div></section><hr class="m-0"><!-- Experience--><section class="resume-section" id="experience"><div class="resume-section-content"><h2 class="mb-5">Experience</h2><div class="d-flex flex-column flex-md-row justify-content-between mb-2"><div class="flex-grow-1"><h3 class="mb-0 text-custom-role-name">Software Engineer</h3><div class="subheading mb-3 text-custom-enterprise-name">Stone Co. <a class="js-scroll-trigger" href="https://www.nasdaq.com/market-activity/stocks/stne">(Nasdaq listed Enterprise)</a></div></div><div class="flex-shrink-0"><span class="text-custom-primary text-custom-data">April 2022 - Present (2 years, 7 months, and 3 days)</span></div></div><div class="d-flex flex-column flex-md-row justify-content-between mb-5"><div class="flex-grow-1 text-custom-description"><p>Hired to work with the Credit Sector, the most profitable product and highly critical to the company financial health. Where I have acquired experience in:</p><ul><li><p> </p>A culture of cutting-edge technology and best practices is fostered through well-defined and documented processes. This includes non-technical aspects such as Modern Agile and Scrum rituals, as well as features related to Governance, Compliance, and DevOps.</li><li><p> </p>I actively participated in the implementation of Onboarding and Breakevens processes, focusing on monitoring and observability using New Relic. I presented the outcomes to the entire Credit department.</li><li><p> </p>Involved in the development of a new application from scratch, encompassing architecture discussions, code standards, and the creation of monitoring, unit, functional, and load tests. Today, this application handles over 2 million daily requests and boasts a maximum maturity level on SonarCloud with its extensive codebase.</li><li><p> </p>Generated documentation for investigations and processes utilizing Backstage and ClickUp. Implemented automations to expedite the construction of the local environment, currently leveraging Jira and contributing to story point estimation.</li><li><p> </p>Successfully delivered core features to the product, contributing to increased business and customer knowledge. Actively engaged in handling various incidents of different magnitudes with excellence, earning internal recognition.</li><li><p> </p>Demonstrated a high commitment to deliverables and value generated through projects, all while maintaining a focus on platform development to achieve the best time-to-market in development.</li><li><p> </p>Took responsibility for over a dozen functional tests, hundreds of unit tests, and the implementation of integration tests, achieving an impressive 8 seconds to execute more than 50 tests on the service.</li><li><p> </p>Frequently assisted new team members in navigating our application flows, understanding business logics, and identifying dependencies, consistently providing support with a warm and helpful approach.</li></ul></div></div><div class="d-flex flex-column flex-md-row justify-content-between mb-2"><div class="flex-grow-1"><h3 class="mb-0 text-custom-role-name">Fullstack Developer</h3><div class="subheading mb-3 text-custom-enterprise-name">Lazarus Development</div></div><div class="flex-shrink-0"><span class="text-custom-primary text-custom-data">August 2020 - March 2022 (1 year 8 months)</span></div></div><div class="d-flex flex-column flex-md-row justify-content-between mb-5"><div class="flex-grow-1 text-custom-description"><h3 class="mb-0 text-custom-role-name"> </h3><div class="subheading mb-3 text-custom-enterprise-name"> </div><p>As a seasoned freelance developer, I have actively contributed to projects characterized by their low maintenance requirements and substantial impact on fostering customer loyalty to the associated brands.<br><br>Utilizing technologies such as PHP, Relational Database, and Javascript, I laid a solid foundation for acquiring a profound understanding of the paramount aspect in development – creating tangible value for both the business and its clientele.<br><br>Among my notable achievements is the pivotal role I played in enhancing various facets of operations for Atenas Fit Oficial, a longstanding local enterprise with over a decade of presence in the fitness and health industry. In this capacity, I focused on optimizing CRM services, fortifying entrance security protocols, and implementing measures to closely monitor disengaged and unpaid customers, thereby contributing significantly to the overall operational efficiency and client satisfaction within the organization.</p></div></div></div></section><hr class="m-0"><!-- Education--><section class="resume-section" id="education"><div class="resume-section-content mb-5"><h2 class="mb-5">Education</h2><div class="d-flex flex-column flex-md-row justify-content-between mb-1"><div class="flex-grow-1"><h3 class="mb-0 text-custom-enterprise-name">University of Estácio de Sá</h3><div class="subheading mb-3 text-custom-role-name">Bachelor of Computer Science</div></div><div class="flex-shrink-0"><span class="text-custom-primary text-custom-data">April 2022 - December 2024</span></div></div><div class="d-flex flex-column flex-md-row justify-content-between mb-5"><div class="flex-grow-1 text-custom-description"><div>Bachelor of Computer Science with 3 years of length.</div><p>GPA: 9.2 out of 10</p></div></div><div class="d-flex flex-column flex-md-row justify-content-between mb-5"><div class="flex-grow-1"><h3 class="mb-0 text-custom-role-name">Desenvolvedor.io (A Microsoft MVP's School of Programming)</h3><div class="subheading mb-3 text-custom-enterprise-name">Fundamentals of Software Architecture</div><a class="js-scroll-trigger" href="https://desenvolvedor.io/certificados/6fe869c9-48d9-4db7-9f18-4870f298aa73/validar">Certificate</a></div></div></div></section><hr class="m-3"><!-- Skills--><section class="resume-section" id="skills"><div class="resume-section-content"><h2 class="mb-5">Skills</h2><div class="subheading mb-3 text-custom-role-name">Programming Languages & Tools</div><ul class="text-custom-description"><li><p> <strong>Techs: </strong>C#, Javascript (mostly for DSA challenges)</p></li><li><p><strong>Frameworks: </strong>.Net, NodeJs</p></li><li><p> <strong>Automated Testing: </strong>Runscope, SpecFlow + DevContainers</p></li><li><p> <strong>Logging: </strong>Grafana Loki, Splunk</p></li><li><p> <strong>Datalake: </strong>Google BigQuery</p></li><li><p> <strong>Observability: </strong>New Relic, PingDom, Datadog</p></li><li><p> <strong>Infrastructure as Code (IaC): </strong>Terraform</p></li><li><p> <strong>Databases: </strong>MySQL, MongoDB</p></li><li><p> <strong>Cloud: </strong>Azure Ecosystem, AWS</p></li></ul><div class="subheading mb-3 text-custom-role-name">Workflow</div><ul class="fa-ul mb-0 text-custom-description"><li><span class="fa-li"><i class="fas fa-check"></i></span>Agile Development & Scrum</li><li><span class="fa-li"><i class="fas fa-check"></i></span>Observability & Debugging</li><li><span class="fa-li"><i class="fas fa-check"></i></span>Domain-Driven Design (DDD) & Microservices</li><li><span class="fa-li"><i class="fas fa-check"></i></span>Automated Testing & Continuous Integration</li></ul></div></section><hr class="m-0"><!-- Portfolio--><section class="resume-section" id="portfolio"><div class="resume-section-content"><h2 class="mb-1">Portfolio</h2><p class="mb-5">My general projects and studies without NDA (Non-Disclosure Agreement) restrictions.</p><div class="mb-5"><div><h3>My accounts on DSA platforms</h3><h4>Leetcode</h4><p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/9d54fe6a2265833ceaaa3ac19f4714fde31f11b831ed28fed1c336dbae86e0de/68747470733a2f2f6c656574636172642e6a61636f626c696e2e636f6f6c2f6d61746575732d6c617a617275733f7468656d653d6461726b26666f6e743d5469726f25323042616e676c61"><img class="img-fluid" src="https://camo.githubusercontent.com/9d54fe6a2265833ceaaa3ac19f4714fde31f11b831ed28fed1c336dbae86e0de/68747470733a2f2f6c656574636172642e6a61636f626c696e2e636f6f6c2f6d61746575732d6c617a617275733f7468656d653d6461726b26666f6e743d5469726f25323042616e676c61" alt="LeetCode Stats" data-canonical-src="https://leetcard.jacoblin.cool/mateus-lazarus?theme=dark&amp;amp;font=Tiro%20Bangla" style="max-width: 100%;"></a></p></div><div><h4>CodeWars</h4><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/37d77d108e2d04827162cfafb9db833df960aac1d4e8b95e5e89594af4460909/68747470733a2f2f7777772e636f6465776172732e636f6d2f75736572732f6d61746575732d6c617a617275732f6261646765732f6c61726765" style="font-size: 1rem;"><img class="img-fluid" alt="CodeWars profile" src="https://camo.githubusercontent.com/37d77d108e2d04827162cfafb9db833df960aac1d4e8b95e5e89594af4460909/68747470733a2f2f7777772e636f6465776172732e636f6d2f75736572732f6d61746575732d6c617a617275732f6261646765732f6c61726765" data-canonical-src="https://www.codewars.com/users/mateus-lazarus/badges/large" style="width: 70%;"></a></div></div><h2>Github Projects</h2><a href="https://github.com/mateus-lazarus/Challenges"><h3>Dsa Challenges' Solutions</h3><img class="img-fluid rounded mb-5" src="assets/img/dsa.png"></a><a href="https://github.com/mateus-lazarus/Projeto_WebScraping_Steam"><h3>Web Scraping Project</h3><video class="img-fluid rounded mb-5" controls="" muted="" src="assets/videos/projeto_steam.mp4"></video></a><a href="https://github.com/mateus-lazarus/Boilerplates"><h3>Boilerplates Of Common Projects And Configurations</h3></a><br><a href="/mock-endpoints-tool"><h3>Mock Endpoints Tool (Click here to try)</h3><p> <a href="https://www.linkedin.com/posts/activity-7254160525826150402-3kAP?utm_source=share&amp;utm_medium=member_android">LinkedIn Post Teaching About It</a></p></a></div></section></div></section></body></html>
