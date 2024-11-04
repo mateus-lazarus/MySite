@@ -28,7 +28,6 @@ app.use(
         "'self'",  // Allow styles from the same origin
         'https://fonts.googleapis.com',  // Allow Google Fonts
         'https://stackpath.bootstrapcdn.com',  // Bootstrap CDN
-        'https://raw.githubusercontent.com',  // GitHub raw content
         "'unsafe-inline'",  // Allow inline styles
       ],
       // Add other directives as needed
@@ -55,7 +54,7 @@ app.use(
         "'self'", 
         'https://fonts.gstatic.com',
       ],
-      "connect-src": ["'self'", "https://raw.githubusercontent.com"],
+      "connect-src": ["'self'"],
     },
   })
 );
@@ -74,14 +73,21 @@ app.set('views', path.join(__dirname, 'views'));
 // app.get('/', (req, res) => {
 //   res.render('index', { timeInStone: calculateTimeInStoneCompany()});
 // });
-
-// app.get('/login', (req, res) => {
-//   res.render('login');
-// });
-
-
 app.get('/', (req, res) => {
   res.sendFile('index.html', { root: path.join(__dirname, 'public') });
+});
+
+
+app.get('/login', (req, res) => {
+  res.render('login');
+});
+
+
+// app.get('/mock-endpoints-tool', (req, res) => {
+//   res.render('mock-page');
+// });
+app.get('/mock-endpoints-tool', (req, res) => {
+  res.sendFile('mock-page.html');
 });
 
 
