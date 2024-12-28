@@ -1,6 +1,11 @@
+// Import Bootstrap SCSS
+@use '../node_modules/bootstrap/scss/bootstrap';
+@use "./variables.scss" as *;
+
+
 // Pre-state grayscale colors used in other variables
-$gray-800: #343a40;
-$gray-600: #60676e;
+$global-gray-800: #343a40;
+$global-gray-600: #60676e;
 
 // Override Bootstrap color system
 $orange: #bd5d38;
@@ -22,13 +27,11 @@ $navbar-base-height: 3.375rem;
 
 body {
     padding-top: $navbar-base-height;
-    color: $gray-600;
+    color: $global-gray-600;
 }
 
-// Import Bootstrap SCSS
-@import '../node_modules/bootstrap/scss/bootstrap';
 
-@include media-breakpoint-up(lg) {
+@include bootstrap.media-breakpoint-up(lg) {
    body {
        padding-top: 0;
        padding-left: $sidebar-base-width;

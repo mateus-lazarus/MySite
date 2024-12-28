@@ -1,13 +1,12 @@
 {
   "name": "my-site-portfolio",
   "version": "1.0.0",
-  "description": "My \"about-me\" site for people get to know me better",
+  "description": "My \"about-me\" site for people get to know me",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "build-css": "sass scss/styles.scss public/css/style.css",
-    "watch-css": "sass scss/styles.scss public/css/style.css --watch",
-    "start-prod": "npm run build-css && npm run start"
+    "build-css": "sass ./scss/styles.scss ./public/css/style.css",
+    "watch-css": "sass ./scss/styles.scss ./public/css/style.css --watch"
   },
   "type": "module",
   "author": "mateus-lazarus",

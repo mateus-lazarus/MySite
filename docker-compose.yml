@@ -1,0 +1,19 @@
+version: '3.9'
+
+networks:
+  my_custom_network:
+    driver: bridge
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: my-site-app:1.0
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production
+    restart: always
+    networks:
+      - my_custom_network  # Connect app to the custom network

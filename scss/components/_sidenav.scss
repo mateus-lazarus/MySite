@@ -1,3 +1,7 @@
+// Import Bootstrap SCSS
+@use '../../node_modules/bootstrap/scss/bootstrap' as bootstrap;
+
+
 // Override Bootstrap color system
 $orange: #bd5d38;
 // Override Bootstrap default state colors
@@ -27,10 +31,8 @@ $primary: $orange;
 }
 
 
-// Import Bootstrap SCSS
-@import '../../node_modules/bootstrap/scss/bootstrap';
 
-@include media-breakpoint-up(lg) {
+@include bootstrap.media-breakpoint-up(lg) {
     #sideNav {
         padding-left: 0;
         padding-right: 0;
@@ -42,7 +44,7 @@ $primary: $orange;
         display: flex;
         flex-direction: column;
 
-        width: $sidebar-base-width;
+        width: 17rem;
         height: 100vh;
 
         .navbar-brand {

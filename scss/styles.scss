@@ -4,17 +4,17 @@
 
 
 // Import variables
-@import "./variables.scss";
+// @use "./variables.scss" as vars;
 
 // // Import Bootstrap
-// @import "bootstrap/scss/bootstrap.scss";
+// @forward "bootstrap/scss/bootstrap.scss";
 
 // Global CSS
-@import "./global.scss";
+@forward "./global.scss";
 
 // Components
-@import "./components/sidenav.scss";
-@import "./components/icons.scss";
+@forward "./components/sidenav.scss";
+@forward "./components/icons.scss";
 
 // Sections
-@import "./sections/resume-section.scss";
+@forward "./sections/resume-section.scss";
