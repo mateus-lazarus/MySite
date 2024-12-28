@@ -90,6 +90,10 @@ app.get('/mock-endpoints-tool', (req, res) => {
   res.sendFile('mock-page.html');
 });
 
+app.get('/template', (req, res) => {
+  res.sendFile('tools-template');
+});
+
 
 app.listen(5000, () => {
   console.log('Server is listening on port 5000');

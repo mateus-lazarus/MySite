@@ -25,15 +25,14 @@ body {
     color: $gray-600;
 }
 
-
 // Import Bootstrap SCSS
 @import '../node_modules/bootstrap/scss/bootstrap';
 
 @include media-breakpoint-up(lg) {
-    body {
-        padding-top: 0;
-        padding-left: $sidebar-base-width;
-    }
+   body {
+       padding-top: 0;
+       padding-left: $sidebar-base-width;
+   }
 }
 
 h1,
