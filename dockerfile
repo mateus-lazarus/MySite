@@ -1,18 +1,26 @@
-FROM node:18-alpine
+# Use a smaller base image for reduced size
+FROM node:18-alpine AS build
 
-# Create app directory
+# Set environment variable for production
+ENV NODE_ENV=production
+
+# Create and set app directory
 WORKDIR /app
 
-# Install app dependencies
+# Copy only the necessary files for installing dependencies
 COPY package*.json ./
 
-#Run npm install
-RUN npm install
+# Install dependencies
+RUN npm ci --only=production
 
-# Bundle app source
+# Copy application source code
 COPY . .
 
-#Expose port and start application
+# Expose the application port
 EXPOSE 5000
 
-CMD [ "npm", "run", "start-prod" ]
+# Use non-root user for security
+USER node
+
+# Start the application
+CMD ["npm", "run", "start-prod"]
