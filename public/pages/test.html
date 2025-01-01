@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real-Time Counter with Roulette Effect</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .counter {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    .digit-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      height: 2rem;
+      width: 1.5rem;
+    }
+
+    .digit {
+      position: absolute;
+      text-align: center;
+      width: 100%;
+      height: 100%;
+      transform: translateY(100%);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .digit.current {
+      transform: translateY(0);
+    }
+
+    .digit.previous {
+      transform: translateY(-100%);
+    }
+  </style>
+</head>
+<body>
+  <h1>Time in Stone Company</h1>
+  <div id="time-counter" class="counter"></div>
+
+  <script src="./../../scripts/roulette-counter.js"></script>
+</body>
+</html>

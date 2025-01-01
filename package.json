@@ -4,7 +4,8 @@
   "description": "My \"about-me\" site for people get to know me",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start-prod": "nodemon index.js",
+    "start-nonprod": "nodemon index-nonprod.js",
     "build-css": "sass ./scss/styles.scss ./public/css/style.css",
     "watch-css": "sass ./scss/styles.scss ./public/css/style.css --watch"
   },

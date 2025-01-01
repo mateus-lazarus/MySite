@@ -3,8 +3,6 @@ import helmet from 'helmet';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-import { calculateTimeInStoneCompany } from './calculateTimeInMyCompanies.js';
-
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -65,33 +63,21 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 
-app.set('view engine', 'pug');
-app.set('views', path.join(__dirname, 'views'));
-
-
-// Commented as the index.pug is for development, but the decision was to use the index.html for production. Thanks helton for the feedback
-// app.get('/', (req, res) => {
-//   res.render('index', { timeInStone: calculateTimeInStoneCompany()});
-// });
 app.get('/', (req, res) => {
-  res.sendFile('index.html', { root: path.join(__dirname, 'public') });
+  res.sendFile('pages/index.html', { root: path.join(__dirname, 'public') });
 });
 
 
 app.get('/login', (req, res) => {
-  res.render('login');
+  res.sendFile('pages/login.html');
 });
 
-
-// app.get('/mock-endpoints-tool', (req, res) => {
-//   res.render('mock-page');
-// });
 app.get('/mock-endpoints-tool', (req, res) => {
-  res.sendFile('mock-page.html');
+  res.sendFile('pages/mock-page.html');
 });
 
 app.get('/template', (req, res) => {
-  res.sendFile('tools-template');
+  res.sendFile('pages/tools-template');
 });
 
 

@@ -184,7 +184,8 @@ html(lang='en')
                                     | Stone Co. 
                                     a.js-scroll-trigger(href='https://www.nasdaq.com/market-activity/stocks/stne') (Nasdaq listed Enterprise)
                             .flex-shrink-0
-                                span.text-custom-primary.text-custom-data April 2022 - Present (#{timeInStone})
+                                span.text-custom-primary.text-custom-data April 2022 - Present : 
+                                    p#myTimeInStone
                         .d-flex.flex-column.flex-md-row.justify-content-between.mb-5
                             .flex-grow-1.text-custom-description
                                 p
@@ -359,5 +360,6 @@ html(lang='en')
 
                         a(href="/mock-endpoints-tool")
                             h3 Mock Endpoints Tool (Click here to try)
-                            p 
+                            p
                                 a(href="https://www.linkedin.com/posts/activity-7254160525826150402-3kAP?utm_source=share&utm_medium=member_android") LinkedIn Post Teaching About It
+        script(src='scripts/calculateTimeInMyCompanies.js')

@@ -1,19 +1,20 @@
 version: '3.9'
 
 networks:
-  my_custom_network:
+  nginx_proxy_manager_default:
     driver: bridge
+    name: nginx_proxy_manager_default
 
 services:
   app:
     build:
       context: .
       dockerfile: Dockerfile
-    image: my-site-app:1.0
+    image: my-site-web
     ports:
-      - "5000:5000"
+      - "45455:5000"
     environment:
       - NODE_ENV=production
     restart: always
     networks:
-      - my_custom_network  # Connect app to the custom network
+      - nginx_proxy_manager_default  # Connect app to the custom network

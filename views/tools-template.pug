@@ -1,0 +1,83 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Responsive Navbar with Bootstrap
+    // Bootstrap CSS
+    link(href="css/style.css" rel="stylesheet" crossorigin="anonymous")
+    // Font Awesome icons (free version)
+    script(src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous")
+  body(style="padding: 0; margin: 0; background-image: linear-gradient(160deg, #0073e9 0%, #80c1d0 100%); background-size: cover; background-repeat: no-repeat; min-height: 100vh;")
+    // Navbar
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+      .container-fluid
+        a.navbar-brand(href="/") Mateus Lazarus
+        button.navbar-toggler(type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation")
+          span.navbar-toggler-icon
+        .collapse.navbar-collapse#navbarNav
+          ul.navbar-nav.me-auto.mb-2.mb-lg-0
+            li.nav-item
+              a.nav-link.active(aria-current="page" href="/tools-template.html") Home
+            li.nav-item.dropdown
+              a.nav-link.dropdown-toggle(href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true") Calculadora Simples
+              ul.dropdown-menu(aria-labelledby="servicesDropdown" data-bs-popper="static")
+                li
+                  a.dropdown-item(href="#service4") Regra de Três
+            li.nav-item.dropdown
+              a.nav-link.dropdown-toggle(href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true") Financeiro
+              ul.dropdown-menu(aria-labelledby="servicesDropdown" data-bs-popper="static")
+                li
+                  a.dropdown-item(href="#service4") Juros Simples
+                li
+                  a.dropdown-item(href="#service4") Juros Compostos
+                li
+                  a.dropdown-item(href="#service4") Conversor de Câmbio
+                li
+                  a.dropdown-item(href="#service4") Conversor de Juros Anual e Mensal
+            // Repeat similar patterns for other dropdown items...
+    section.px-4.py5.my-5.text-center
+      h1.display-1.fw-bold.text-body-emphasis Calculadora de Juros
+      h2.display-3 Calcular Juros de Financiamento
+    section.m-5.background-white
+      .p-5.border.rounded-3.my-3(style="background-color: #2f8ae1")
+        form(action="juros.php" method="post")
+          .mb-3
+            label(for="valor" class="form-label") Valor do Financiamento
+            input#valor.form-control(type="number" name="valor" required step="0.01" min="1" value="12000")
+          .mb-3
+            label(for="juros" class="form-label") Taxa de Juros ao Mês
+            input#juros.form-control(type="number" name="juros" required step="0.01" min="-10" value="0.9")
+          .d-flex
+            .mb-3.flex-grow-1
+              label(for="parcelas" class="form-label") Número de Parcelas
+              input#parcelas.form-control(type="number" name="parcelas" required min="1" step="1" value="12")
+            .align-self-center.m-3
+              .d-flex.flex-column
+                label(for="period-select") Período:
+                select#period-select(name="period")
+                  option(value="mes") Mês
+                  option(value="ano") Ano
+          button.btn.btn-success(type="submit") Calcular
+      .m-3.p-4.border.rounded-2(style="background-color: #ffffffa8")
+        h4 Resultado:
+        form(action="juros.php" method="post")
+          .mb-3
+            label(for="valor" class="form-label") Valor do Financiamento
+            input#valor.form-control(type="number" name="valor" required step="0.01" min="1" value="12000")
+          .mb-3
+            label(for="juros" class="form-label") Taxa de Juros ao Mês
+            input#juros.form-control(type="number" name="juros" required step="0.01" min="-10" value="0.9")
+          .d-flex
+            .mb-3.flex-grow-1
+              label(for="parcelas" class="form-label") Número de Parcelas
+              input#parcelas.form-control(type="number" name="parcelas" required min="1" step="1" value="12")
+            .align-self-center.m-3
+              .d-flex.flex-column
+                label(for="period-select") Período:
+                select#period-select(name="period")
+                  option(value="mes") Mês
+                  option(value="ano") Ano
+          button.btn.btn-success(type="submit") Calcular
+    // Bootstrap JavaScript Bundle with Popper
+    script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js")
