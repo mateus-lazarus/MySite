@@ -88,6 +88,23 @@ app.get('/template', (req, res) => {
 });
 
 
+app.get('/test', (req, res) => {
+  res.sendFile('pages/test.html');
+});
+
+
+app.post('/calculate', (req, res) => {
+  res.json(
+    {
+      'result': {'result': 55, 'installments': 11, 'installmentValue': 5},
+      'data': req.body,
+      'typeOfCalculation': 'sum',
+      'numbers': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    }
+  );
+});
+
+
 app.listen(5000, () => {
   console.log('Server is listening on port 5000');
 });
