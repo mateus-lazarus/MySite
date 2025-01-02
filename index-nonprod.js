@@ -96,7 +96,7 @@ app.get('/test', (req, res) => {
 app.post('/calculate', (req, res) => {
   res.json(
     {
-      'result': {'result': 55, 'installments': 11, 'installmentValue': 5},
+      'result': {'result': 55, 'installments': 11, 'installmentValue': 5, 'numbers': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]},
       'data': req.body,
       'typeOfCalculation': 'sum',
       'numbers': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
