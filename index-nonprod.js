@@ -89,20 +89,36 @@ app.get('/template', (req, res) => {
 
 
 app.get('/test', (req, res) => {
-  res.sendFile('pages/test.html');
+  res.sendFile(path.join(__dirname, 'public/pages/test.html'));
 });
 
+app.get('/test1', (req, res) => {
+  res.render('calculator/calculatorSum');
+});
+
+
+
+// app.post('/calculate', (req, res) => {
+//   res.json(
+//     {
+//       'result': {'result': 55, 'installments': 11, 'installmentValue': 5, 'numbers': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]},
+//       'data': req.body,
+//       'typeOfCalculation': 'sum',
+//       'numbers': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+//     }
+//   );
+// });
 
 app.post('/calculate', (req, res) => {
-  res.json(
-    {
-      'result': {'result': 55, 'installments': 11, 'installmentValue': 5, 'numbers': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]},
-      'data': req.body,
-      'typeOfCalculation': 'sum',
-      'numbers': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    }
-  );
+  if (req.body['typeOfCalc'] === 'Sum') {
+    let sumResult = Number(req.body['firstNumber']) + Number(req.body['secondNumber']);
+    let result = { 'result': sumResult };
+
+    res.json({ result });
+  }
 });
+
+
 
 
 app.listen(5000, () => {

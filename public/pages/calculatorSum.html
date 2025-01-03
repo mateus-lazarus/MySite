@@ -1,15 +1,26 @@
 <!DOCTYPE html>
-<html lang="en" style="background: black; color: white;">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HTTP POST Example</title>
+  <style>
+    .background {
+      background-color: #000000;
+      padding: 10px;
+    }
+    .text {
+      color: #afafaf;
+    }
+  </style>
 </head>
 <body>
   <h1>Soma Calculadora</h1>
   <form id="postForm">
+
+    
     <!-- The part that will change below -->
-    <input >
+    <input type="text" id="typeOfCalc" name="typeOfCalc" value="Sum" style="display: none;">
     <br>
     <label for="number">Primeiro Numero:</label>
     <input type="number" id="firstNumber" name="firstNumber" required>
@@ -17,6 +28,8 @@
     <label for="number">Segundo Numero:</label>
     <input type="number" id="secondNumber" name="secondNumber" required>
     <!-- End -->
+
+
     <br>
     <input type="checkbox" id="checkbox">Persist results</checkbox>
     <br>
@@ -28,16 +41,13 @@
   </div>
 
   <script>
-    // JavaScript for handling form submission
     document.getElementById('postForm').addEventListener('submit', async function (event) {
       event.preventDefault(); // Prevent the default form submission
 
-      // Collect form data
       const formData = new FormData(event.target);
       const data = Object.fromEntries(formData.entries());
 
       try {
-        // Send HTTP POST request
         const response = await fetch('/calculate', {
           method: 'POST',
           headers: {
@@ -50,19 +60,15 @@
           throw new Error(`HTTP post to \'/calculate\' error! status: ${response.status}`);
         }
 
-        // Parse the response
         const responseObject = await response.json();
 
-        // If the results objects return empty
         if (Object.keys(responseObject['result']).length === 0) {
           throw new Error('No results returned!');
         }
 
-        // Display the response object
         let responseDiv = document.getElementById('response');
         responseDiv.style.display = 'block';
 
-        // Create an unordered list element
         const listOfResultsHtml = document.createElement('ul');
         listOfResultsHtml.id = 'list-of-results';
 
@@ -75,7 +81,6 @@
           listOfResultsHtml.appendChild(listItemHtml);
         }
 
-        // Should clear the response div before appending the new list
         const checkbox = document.getElementById('checkbox');
         if (!checkbox.checked) {
           responseDiv.querySelectorAll('#list-of-results').forEach((element) => {

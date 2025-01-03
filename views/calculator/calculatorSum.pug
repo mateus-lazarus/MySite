@@ -1,0 +1,10 @@
+extends templateCalculator.pug
+include components/paramComponent.pug
+include components/typeOfCalculationComponent.pug
+
+block content
+  // Include the type of calculation mixin
+  +typeOfCalculationComponent('sum')
+  // Include the card mixin and pass data
+  +paramComponent('First Number', 'number', 'firstNumber', 'firstNumber', '10', 'required')
+  +paramComponent('Second Number', 'number', 'secondNumber', 'secondNumber', '10', 'required')

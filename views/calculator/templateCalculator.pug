@@ -1,0 +1,91 @@
+doctype html
+html(lang="en", style="background: black; color: white;")
+
+
+
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title HTTP POST Example
+
+
+
+  body
+    h1 Soma Calculadora
+    form#postForm
+      block content
+
+      br
+      label(for="checkbox") Persist results:
+      input#checkbox(type="checkbox")
+      br
+      button(type="submit") Submit
+
+
+
+    div#response(style="display: none;")
+      h2 Response:
+
+
+
+    script.
+      // JavaScript for handling form submission
+      document.getElementById('postForm').addEventListener('submit', async function (event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        // Collect form data
+        const formData = new FormData(event.target);
+        const data = Object.fromEntries(formData.entries());
+
+        try {
+          // Send HTTP POST request
+          const response = await fetch('/calculate', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+          });
+
+          if (!response.status === 200) {
+            throw new Error(`HTTP post to '/calculate' error! status: ${response.status}`);
+          }
+
+          // Parse the response
+          const responseObject = await response.json();
+
+          // If the results objects return empty
+          if (Object.keys(responseObject['result']).length === 0) {
+            throw new Error('No results returned!');
+          }
+
+          // Display the response object
+          let responseDiv = document.getElementById('response');
+          responseDiv.style.display = 'block';
+
+          // Create an unordered list element
+          const listOfResultsHtml = document.createElement('ul');
+          listOfResultsHtml.id = 'list-of-results';
+
+          for(let key in responseObject['result']) {
+            console.log(key, responseObject['result'][key]);
+            const listItemHtml = document.createElement('li');
+            listItemHtml.id = `list-item-${key}`;
+            listItemHtml.classList.add('list-item');
+            listItemHtml.textContent = `${key}: ${responseObject['result'][key]}`;
+            listOfResultsHtml.appendChild(listItemHtml);
+          }
+
+          // Should clear the response div before appending the new list
+          const checkbox = document.getElementById('checkbox');
+          if (!checkbox.checked) {
+            responseDiv.querySelectorAll('#list-of-results').forEach((element) => {
+              element.remove();
+            });
+          }
+
+          responseDiv.appendChild(listOfResultsHtml);
+        } catch (error) {
+          document.getElementById('response').textContent = `Error: ${error.message}`;
+        }
+      });
