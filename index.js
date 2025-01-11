@@ -64,20 +64,24 @@ app.use(express.urlencoded({ extended: false }));
 
 
 app.get('/', (req, res) => {
-  res.sendFile('pages/index.html', { root: path.join(__dirname, 'public') });
+  res.sendFile('home/pages/index.html', { root: path.join(__dirname, 'public') });
 });
 
 
 app.get('/login', (req, res) => {
-  res.sendFile('pages/login.html');
+  res.sendFile('home/pages/login.html');
 });
 
 app.get('/mock-endpoints-tool', (req, res) => {
-  res.sendFile('pages/mock-page.html');
+  res.sendFile('home/pages/mock-page.html');
 });
 
 app.get('/template', (req, res) => {
-  res.sendFile('pages/tools-template');
+  res.sendFile('home/pages/tools-template');
+});
+
+app.get('/calculator', (req, res) => {
+  res.sendFile('calculator/pages/index.html');
 });
 
 

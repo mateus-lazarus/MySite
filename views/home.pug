@@ -1,0 +1,124 @@
+doctype
+html
+    head
+        title 🌳 The Lazarus Tree 
+        style.
+            body {
+                font-family: 'Roboto', sans-serif;
+                background-color: #e0f7fa;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+            }
+            .container {
+                text-align: center;
+                background-color: rgba(255, 255, 255, 0.21);
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                width: 350px;
+                z-index: 1;
+                backdrop-filter: blur(2rem);
+                transition: background-color 2s ease-in-out;
+            }
+            .container:hover {
+                background-color: rgb(175 213 227 / 64%);
+            }
+            .profile-pic {
+                width: 15rem;
+                height: 12rem;
+                border-radius: 50%;
+                margin-bottom: 1rem;
+            }
+
+            @media (max-height: 700px) {
+                .profile-pic {
+                    display: none;
+                }
+            }
+            .name {
+                font-size: 24px;
+                color: #007bb5;
+                margin-bottom: 10px;
+            }
+            .bio {
+                font-size: 16px;
+                color: #007bb5;
+                margin-bottom: 20px;
+            }
+            .link {
+                display: block;
+                background-color: #007bb5;
+                color: #ffffff;
+                text-decoration: none;
+                padding: 15px;
+                border-radius: 5px;
+                margin: 10px 0;
+                transition: background-color 0.3s;
+                font-size: 18px;
+            }
+            .link:hover {
+                background-color: #005f8b;
+            }
+        
+        script.
+            function createStar() {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                star.style.left = `${Math.random() * 100}vw`;
+                star.style.top = `${Math.random() * 100}vh`;
+                document.body.appendChild(star);
+
+                setTimeout(() => {
+                        star.remove();
+                    }, 3600);
+            }
+
+            function generateStars() {
+                setInterval(createStar, 240);
+            }
+
+            document.addEventListener('DOMContentLoaded', generateStars);
+
+        style.
+            .star {
+                position: absolute;
+                width: 2rem;
+                height: 2rem;
+                background-color: transparent;
+                clip-path: polygon(
+                    50% 0%,
+                    61% 35%,
+                    98% 35%,
+                    68% 57%,
+                    79% 91%,
+                    50% 70%,
+                    21% 91%,
+                    32% 57%,
+                    2% 35%,
+                    39% 35%
+                );
+                background-color:rgba(11, 163, 112, 0.42);
+                box-shadow: 0 0 8rem white;
+                animation: twinkle 4s infinite;
+            }
+
+            @keyframes twinkle {
+                0%, 100% { opacity: 0; }
+                50% { opacity: 1; }
+            }
+
+    body
+        .container
+            img.profile-pic(src='/home/assets/img/my-profile.jpg', alt='Profile Picture')
+            .name Mateus Lazarus
+            .bio Software Engineer
+            a.link(href='/about-me') About Me - Portfolio
+            a.link(href='/calculator') My Own Calculator
+            a.link(href='/mock-endpoints-toll') Mock Endpoints Tool
+            a.link(href='https://medium.com') Medium
+            a.link(href='https://github.com') GitHub
+            a.link(href='https://linkedin.com') LinkedIn
+            

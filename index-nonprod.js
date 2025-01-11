@@ -71,6 +71,10 @@ app.set('views', path.join(__dirname, 'views'));
 
 // Commented as the index.pug is for development, but the decision was to use the index.html for production. Thanks helton for the feedback
 app.get('/', (req, res) => {
+  res.render('home');
+});
+
+app.get('/about-me', (req, res) => {
   res.render('index');
 });
 
@@ -89,11 +93,11 @@ app.get('/template', (req, res) => {
 
 
 app.get('/test', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/pages/test.html'));
+  res.sendFile(path.join(__dirname, 'public/calculator/pages/index.html'));
 });
 
 app.get('/test1', (req, res) => {
-  res.render('calculator/calculatorSum');
+  res.render('calculator');
 });
 
 

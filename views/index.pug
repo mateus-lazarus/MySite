@@ -60,7 +60,7 @@ html(lang='en')
     
                 // Fetch the style.html file and extract the CSS
                 // Core theme CSS (includes Bootstrap)
-                fetch('css/style.html')
+                fetch('home/css/style.html')
                     .then(response => response.text())
                     .then(data => {
                         // Create a new style element
@@ -121,7 +121,7 @@ html(lang='en')
                 a.navbar-brand.js-scroll-trigger(href='#page-top')
                     span.d-block.d-lg-none Mateus Lazarus
                     span.d-none.d-lg-block
-                        img.img-fluid.img-profile.rounded-circle.mx-auto.mb-2(src='assets/img/my-profile.jpg', alt='my profile photo')
+                        img.img-fluid.img-profile.rounded-circle.mx-auto.mb-2(src='home/assets/img/my-profile.jpg', alt='my profile photo')
                 button.navbar-toggler(type='button', data-bs-toggle='collapse', data-bs-target='#navbarResponsive', aria-controls='navbarResponsive', aria-expanded='false', aria-label='Toggle navigation')
                     span.navbar-toggler-icon
                 #navbarResponsive.collapse.navbar-collapse
@@ -347,11 +347,11 @@ html(lang='en')
 
                         a(href="https://github.com/mateus-lazarus/Challenges")
                             h3 Dsa Challenges' Solutions
-                            img.img-fluid.rounded.mb-5(src="assets/img/dsa.png")
+                            img.img-fluid.rounded.mb-5(src="home/assets/img/dsa.png")
 
                         a(href="https://github.com/mateus-lazarus/Projeto_WebScraping_Steam")
                             h3 Web Scraping Project
-                            video.img-fluid.rounded.mb-5(controls='' muted='' src="assets/videos/projeto_steam.mp4")
+                            video.img-fluid.rounded.mb-5(controls='' muted='' src="home/assets/videos/projeto_steam.mp4")
                         
                         a(href="https://github.com/mateus-lazarus/Boilerplates")
                             h3 Boilerplates Of Common Projects And Configurations
