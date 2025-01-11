@@ -26,6 +26,7 @@ app.use(
         "'self'",  // Allow styles from the same origin
         'https://fonts.googleapis.com',  // Allow Google Fonts
         'https://stackpath.bootstrapcdn.com',  // Bootstrap CDN
+        'https://cdnjs.cloudflare.com/',  // Allow styles from Cloudflare
         "'unsafe-inline'",  // Allow inline styles
       ],
       // Add other directives as needed
@@ -64,24 +65,27 @@ app.use(express.urlencoded({ extended: false }));
 
 
 app.get('/', (req, res) => {
-  res.sendFile('home/pages/index.html', { root: path.join(__dirname, 'public') });
+  res.sendFile(path.join(__dirname, 'public/home/pages/home.html'));
+});
+
+
+app.get('/about-me', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/home/pages/about-me.html'));
 });
 
 
 app.get('/login', (req, res) => {
-  res.sendFile('home/pages/login.html');
+  res.sendFile(path.join(__dirname, 'public/home/pages/login.html'));
 });
+
 
 app.get('/mock-endpoints-tool', (req, res) => {
-  res.sendFile('home/pages/mock-page.html');
+  res.sendFile(path.join(__dirname, 'public/home/pages/mock-page.html'));
 });
 
-app.get('/template', (req, res) => {
-  res.sendFile('home/pages/tools-template');
-});
 
 app.get('/calculator', (req, res) => {
-  res.sendFile('calculator/pages/index.html');
+  res.sendFile(path.join(__dirname, 'public/calculator/pages/calculator.html'));
 });
 
 

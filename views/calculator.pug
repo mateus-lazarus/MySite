@@ -6,11 +6,11 @@ html(lang="en")
     meta(name="keywords" content="")
     meta(name="description" content="")
     meta(name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no")
-    link(rel="shortcut icon" href="calculator/images/favicon.ico" title="Favicon")
-    link(rel="stylesheet" href="calculator/css/style.css")
-    link(rel="stylesheet" href="calculator/css/lazarus-color.css")
-    link(rel="stylesheet" href="calculator/css/font-awesome.min.css")
-    link(rel="stylesheet" href="calculator/css/animate.css")
+    link(rel="shortcut icon" href="../calculator/images/favicon.ico" title="Favicon")
+    link(rel="stylesheet" href="../calculator/css/style.css")
+    link(rel="stylesheet" href="../calculator/css/lazarus-color.css")
+    link(rel="stylesheet" href="../calculator/css/font-awesome.min.css")
+    link(rel="stylesheet" href="../calculator/css/animate.css")
     link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800")
   body(style="overflow-y: visible;")
     #preloader(style="display: none;")
@@ -50,11 +50,11 @@ html(lang="en")
                   li
                     a(href="/" class="") Home
                   li
-                    a(href="/financial" class="active") Financial
+                    a(href="./financial" class="active") Financial
                   li
-                    a(href="/eletric") Eletric
+                    a(href="./eletric") Eletric
                   li
-                    a(href="/cloudcosts") Cloud Costs
+                    a(href="./cloudcosts") Cloud Costs
                   li
                     a(href="/about-me") About the developer
               #nav-trigger
@@ -64,11 +64,11 @@ html(lang="en")
                   li
                     a(href="/" class="") Home
                   li
-                    a(href="/financial" class="active") Financial
+                    a(href="./financial" class="active") Financial
                   li
-                    a(href="/eletric") Eletric
+                    a(href="./eletric") Eletric
                   li
-                    a(href="/cloudcosts") Cloud Costs
+                    a(href="./cloudcosts") Cloud Costs
                   li
                     a(href="/about-me") About the developer
         #banner-content.row.clearfix
@@ -78,7 +78,7 @@ html(lang="en")
               h2
                 b MyCalculator
                 |  is a free calculator that will not have pop-ups and will bring together all yours needs
-            a.button(href="/") See all options to calculate
+            a.button(href=".") See all options to calculate
       main#content
         section#about.introduction.scrollto(tabindex="-1")
           .row.clearfix
@@ -94,7 +94,7 @@ html(lang="en")
               .section-heading
                 h3 Compound Interests
                 h2.section-heading Params
-                form(action="compound-interest.php" method="post" style="text-align: left;")
+                form(action="" method="post" style="text-align: left;")
                   div(style="display: flex; align-items: center; margin-bottom: 1rem;")
                     label(for="initial-value" style="font-family: 'Open Sans', sans-serif, Arial, Helvetica; font-size: 18px; font-weight: 400; color: #111; padding: 0.2rem; margin-right: 1rem; min-width: 150px;") Initial Value
                     input#initial-value(type="number" name="initial-value" required style="width: 12rem; padding: 0.5rem;")
@@ -124,7 +124,7 @@ html(lang="en")
             div
               .section-heading
                 h2.section-title Help Us Serve You Better!
-          form(action="send-email.php" method="post" style="max-width: 500px; margin: auto;")
+          form(action="" method="post" style="max-width: 500px; margin: auto;")
             div(style="margin-bottom: 1rem;")
               label(for="client-email" style="display: block; font-family: 'Open Sans', sans-serif, Arial, Helvetica; font-size: 16px; font-weight: 600; color: #111; margin-bottom: 0.5rem;") Client Email
               input#client-email(type="email" name="client-email" required style="width: 100%; padding: 0.5rem; font-size: 14px; border: 1px solid #ccc; border-radius: 4px;")
@@ -145,18 +145,18 @@ html(lang="en")
           a(href="mailto:contact@mateuslazarus.com") Contact: contact@mateuslazarus.com
 
         // Include JavaScript resources
-        script(src="calculator/js/jquery.1.8.3.min.js")
-        script(src="calculator/js/wow.min.js")
-        script(src="calculator/js/featherlight.min.js")
-        script(src="calculator/js/featherlight.gallery.min.js")
-        script(src="calculator/js/jquery.enllax.min.js")
-        script(src="calculator/js/jquery.scrollUp.min.js")
-        script(src="calculator/js/jquery.easing.min.js")
-        script(src="calculator/js/jquery.stickyNavbar.min.js")
-        script(src="calculator/js/jquery.waypoints.min.js")
-        script(src="calculator/js/images-loaded.min.js")
-        script(src="calculator/js/lightbox.min.js")
-        script(src="calculator/js/site.js")
+        script(src="../calculator/js/jquery.1.8.3.min.js")
+        script(src="../calculator/js/wow.min.js")
+        script(src="../calculator/js/featherlight.min.js")
+        script(src="../calculator/js/featherlight.gallery.min.js")
+        script(src="../calculator/js/jquery.enllax.min.js")
+        script(src="../calculator/js/jquery.scrollUp.min.js")
+        script(src="../calculator/js/jquery.easing.min.js")
+        script(src="../calculator/js/jquery.stickyNavbar.min.js")
+        script(src="../calculator/js/jquery.waypoints.min.js")
+        script(src="../calculator/js/images-loaded.min.js")
+        script(src="../calculator/js/lightbox.min.js")
+        script(src="../calculator/js/site.js")
 
         a#scrollUp(href="#top", style="position: fixed; z-index: 2147483647; overflow: hidden; display: inline")
         a#scrollUp(href="#top", style="position: fixed; z-index: 2147483647; overflow: hidden; display: block")

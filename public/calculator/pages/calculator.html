@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>My Calculator</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="shortcut icon" href="../calculator/images/favicon.ico" title="Favicon">
+    <link rel="stylesheet" href="../calculator/css/style.css">
+    <link rel="stylesheet" href="../calculator/css/lazarus-color.css">
+    <link rel="stylesheet" href="../calculator/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../calculator/css/animate.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800">
+  </head>
+  <body style="overflow-y: visible;">
+    <div id="preloader" style="display: none;">
+      <div class="la-ball-triangle-path" id="status" style="display: none;">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <div class="page-border" data-wow-duration="0.7s" data-wow-delay="0.2s">
+      <div class="top-border wow fadeInDown" style="visibility: visible; animation-name: fadeInDown;"></div>
+      <div class="right-border wow fadeInRight" style="visibility: visible; animation-name: fadeInRight;"></div>
+      <div class="bottom-border wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;"></div>
+      <div class="left-border wow fadeInLeft" style="visibility: visible; animation-name: fadeInLeft;"></div>
+    </div>
+    <div id="wrapper">
+      <header class="scrollto clearfix" id="banner" data-enllax-ratio=".5" tabindex="-1" style="background-position: center 415px;">
+        <div class="nav-collapse sticky fadeIn animated nav-solid fadeInDown" id="header" style="position: fixed; z-index: 9999;">
+          <div class="row clearfix">
+            <div class="col-1">
+              <div id="logo"><span id="banner-logo" style="font-family: 'Aesthetic-Regular'; font-size: 3.6rem; padding: 0rem;" alt="Landing Page">Lazarus</span><span id="navigation-logo" style="font-family: 'Aesthetic-Regular'; font-size: 1.8rem; padding: 0.5rem 0rem 0rem 1rem;" alt="Landing Page">Lazarus</span></div>
+              <aside>
+                <ul class="social-icons">
+                  <li><a target="_blank" title="LinkedIn" href="http://www.linkedin.com/in/mateus-lazarus"><i class="fa fa-linkedin fa-2x"></i><span>LinkedIn</span></a></li>
+                  <li><a target="_blank" title="Github" href="http://www.github.com/mateus-lazarus"><i class="fa fa-github fa-2x"></i><span>Github</span></a></li>
+                  <li><a target="_blank" title="Instagram" href="http://www.instagram.com/@mateuslazarusdev"><i class="fa fa-instagram fa-2x"></i><span>Instagram</span></a></li>
+                </ul>
+              </aside>
+              <nav id="nav-main">
+                <ul>
+                  <li><a href="/">Home</a></li>
+                  <li><a class="active" href="./financial">Financial</a></li>
+                  <li><a href="./eletric">Eletric</a></li>
+                  <li><a href="./cloudcosts">Cloud Costs</a></li>
+                  <li><a href="/about-me">About the developer</a></li>
+                </ul>
+              </nav>
+              <div id="nav-trigger"><span style="padding-top: 0.47rem; font-size: 2rem;"></span></div>
+              <nav id="nav-mobile">
+                <ul>
+                  <li><a href="/">Home</a></li>
+                  <li><a class="active" href="./financial">Financial</a></li>
+                  <li><a href="./eletric">Eletric</a></li>
+                  <li><a href="./cloudcosts">Cloud Costs</a></li>
+                  <li><a href="/about-me">About the developer</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+        <div class="row clearfix" id="banner-content">
+          <div class="col-38">
+            <div class="section-heading">
+              <h1>A SIMPLE AND ALL INCLUSIVE CALCULATOR</h1>
+              <h2><b>MyCalculator</b> is a free calculator that will not have pop-ups and will bring together all yours needs</h2>
+            </div><a class="button" href=".">See all options to calculate</a>
+          </div>
+        </div>
+      </header>
+      <main id="content">
+        <section class="introduction scrollto" id="about" tabindex="-1">
+          <div class="row clearfix">
+            <div>
+              <div class="section-heading">
+                <h3>Help Us Serve You Better!</h3>
+                <h2 class="section-title">Didn't find what you wanted?<br>Submit what you want via the form at the bottom of the page. We'll deliver your solution within 24 hours!</h2>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="introduction scrollto" id="about" tabindex="-1">
+          <div class="row clearfix" style="margin-bottom: 4rem; padding-bottom: 0;">
+            <div>
+              <div class="section-heading">
+                <h3>Compound Interests</h3>
+                <h2 class="section-heading">Params</h2>
+                <form action="" method="post" style="text-align: left;">
+                  <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                    <label for="initial-value" style="font-family: 'Open Sans', sans-serif, Arial, Helvetica; font-size: 18px; font-weight: 400; color: #111; padding: 0.2rem; margin-right: 1rem; min-width: 150px;">Initial Value</label>
+                    <input id="initial-value" type="number" name="initial-value" required style="width: 12rem; padding: 0.5rem;">
+                  </div>
+                  <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                    <label for="interest-rate" style="font-family: 'Open Sans', sans-serif, Arial, Helvetica; font-size: 18px; font-weight: 400; color: #111; padding: 0.2rem; margin-right: 1rem; min-width: 150px;">Interest Rate</label>
+                    <input id="interest-rate" type="number" name="interest-rate" required style="width: 12rem; padding: 0.5rem;">
+                  </div>
+                  <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                    <label for="time" style="font-family: 'Open Sans', sans-serif, Arial, Helvetica; font-size: 18px; font-weight: 400; color: #111; padding: 0.2rem; margin-right: 1rem; min-width: 150px;">Time</label>
+                    <input id="time" type="number" name="time" required style="width: 12rem; padding: 0.5rem;">
+                  </div>
+                  <button class="custom-buttom-style" type="submit" style="padding: 0.5rem 1rem; font-size: 16px;">Calculate</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="introduction scrollto" id="about" tabindex="-1">
+          <div class="row clearfix" style="padding-top: 0;">
+            <div>
+              <div class="section-heading">
+                <h2 class="section-heading">Results</h2>
+                <ul style="font-family: 'Open Sans', sans-serif, Arial, Helvetica; font-size: 18px; font-weight: 400; color: #111; padding: 0.5rem 2rem; border-radius: 1rem; box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0; display: inline-grid;">
+                  <li><span>Initial Value: 11</span></li>
+                  <li><span>Interest Rate: 11</span></li>
+                  <li><span>Time: 11</span></li>
+                  <li><span>Final Value: 11</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="introduction scrollto" id="about" tabindex="-1">
+          <div class="row clearfix" style="padding-bottom: 0;">
+            <div>
+              <div class="section-heading">
+                <h2 class="section-title">Help Us Serve You Better!</h2>
+              </div>
+            </div>
+          </div>
+          <form action="" method="post" style="max-width: 500px; margin: auto;">
+            <div style="margin-bottom: 1rem;">
+              <label for="client-email" style="display: block; font-family: 'Open Sans', sans-serif, Arial, Helvetica; font-size: 16px; font-weight: 600; color: #111; margin-bottom: 0.5rem;">Client Email</label>
+              <input id="client-email" type="email" name="client-email" required style="width: 100%; padding: 0.5rem; font-size: 14px; border: 1px solid #ccc; border-radius: 4px;">
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <label for="email-options" style="display: block; font-family: 'Open Sans', sans-serif, Arial, Helvetica; font-size: 16px; font-weight: 600; color: #111; margin-bottom: 0.5rem;">Email Options</label>
+              <select id="email-options" name="email-options" required style="width: 100%; padding: 0.5rem; font-size: 14px; border: 1px solid #ccc; border-radius: 4px;">
+                <option value="bug-report">Bug Report</option>
+                <option value="suggestion">Suggestion</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <label for="message" style="display: block; font-family: 'Open Sans', sans-serif, Arial, Helvetica; font-size: 16px; font-weight: 600; color: #111; margin-bottom: 0.5rem;">Message</label>
+              <textarea id="message" name="message" rows="4" required style="width: 100%; padding: 0.5rem; font-size: 14px; border: 1px solid #ccc; border-radius: 4px;"></textarea>
+            </div>
+            <button class="custom-buttom-style" type="submit" style="padding: 0.5rem 1rem; font-size: 16px;">Submit</button>
+          </form>
+        </section>
+      </main>
+      <footer style="text-align: center; padding: 1rem; background-color: #f8f8f8; font-family: 'Open Sans', sans-serif, Arial, Helvetica; font-size: 14px;">
+        <p class="col-2" id="copyright">Copyright by <a href="/about-me">Mateus Lazarus Inc @ 2025</a></p>
+        <p class="col-2" id="copyright" style="text-align: end;"><a href="mailto:contact@mateuslazarus.com">Contact: contact@mateuslazarus.com</a></p>
+        <!-- Include JavaScript resources-->
+        <script src="../calculator/js/jquery.1.8.3.min.js"></script>
+        <script src="../calculator/js/wow.min.js"></script>
+        <script src="../calculator/js/featherlight.min.js"></script>
+        <script src="../calculator/js/featherlight.gallery.min.js"></script>
+        <script src="../calculator/js/jquery.enllax.min.js"></script>
+        <script src="../calculator/js/jquery.scrollUp.min.js"></script>
+        <script src="../calculator/js/jquery.easing.min.js"></script>
+        <script src="../calculator/js/jquery.stickyNavbar.min.js"></script>
+        <script src="../calculator/js/jquery.waypoints.min.js"></script>
+        <script src="../calculator/js/images-loaded.min.js"></script>
+        <script src="../calculator/js/lightbox.min.js"></script>
+        <script src="../calculator/js/site.js"></script><a id="scrollUp" href="#top" style="position: fixed; z-index: 2147483647; overflow: hidden; display: inline"></a><a id="scrollUp" href="#top" style="position: fixed; z-index: 2147483647; overflow: hidden; display: block"></a>
+      </footer>
+    </div>
+  </body>
+</html>

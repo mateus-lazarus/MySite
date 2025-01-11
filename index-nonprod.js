@@ -92,8 +92,12 @@ app.get('/template', (req, res) => {
 });
 
 
-app.get('/test', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/calculator/pages/index.html'));
+// app.get('/calculator', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'public/calculator/pages/index.html'));
+// });
+
+app.get('/calculator', (req, res) => {
+  res.render('calculator');
 });
 
 app.get('/test1', (req, res) => {
