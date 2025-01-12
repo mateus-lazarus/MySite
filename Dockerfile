@@ -32,4 +32,4 @@ EXPOSE 5000
 USER node
 
 # Start the application
-CMD ["npm", "run", "start"]
+CMD ["npm", "run", "start-prod"]
