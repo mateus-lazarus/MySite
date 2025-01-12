@@ -75,7 +75,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/about-me', (req, res) => {
-  res.render('index');
+  res.render('about-me');
 });
 
 app.get('/login', (req, res) => {
