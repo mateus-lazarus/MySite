@@ -134,7 +134,7 @@ app.use(express.urlencoded({ extended: false }));
 
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/home/pages/home.html'));
+  res.redirect('https://linktree.mateuslazarus.com');
 });
 
 

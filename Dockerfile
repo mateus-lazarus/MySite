@@ -1,3 +1,6 @@
+# Should use multi-staged builds to reduce the size of the final image
+
+
 # Use a smaller base image for reduced size
 FROM node:18-alpine AS build
 
