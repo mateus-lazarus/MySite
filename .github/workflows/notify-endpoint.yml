@@ -1,0 +1,25 @@
+# .github/workflows/notify-endpoint.yml
+name: Notify Endpoint of New Commit
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  post-commit-hash:
+    name: POST Commit Hash
+    runs-on: ubuntu-latest
+    env:
+      # Define your endpoint as a repo secret for safety.
+      ENDPOINT_URL: ${{ secrets.COMMIT_WEBHOOK_URL }}
+      # GitHub provides the full 40-char SHA in this variable.
+      COMMIT_SHA: ${{ github.sha }}
+    steps:
+      - name: Send commit SHA to endpoint
+        run: |
+          echo "Posting hash $COMMIT_SHA to $ENDPOINT_URL"
+          curl --fail -X POST "$ENDPOINT_URL" \
+            -H "bypass-tunnel-reminder: true" \
+            -d "{\"hash_id\": \"${COMMIT_SHA}\"}"
