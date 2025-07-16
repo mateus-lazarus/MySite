@@ -17,10 +17,9 @@ jobs:
       # GitHub provides the full 40-char SHA in this variable.
       COMMIT_SHA: ${{ github.sha }}
     steps:
-      - name: Send commit SHA to endpoint
+      - name: POST commit hash (verbose)
         run: |
-          echo "Sending to: $ENDPOINT_URL"
-          curl -v -X POST $ENDPOINT_URL" \
-            -H "Content-Type: application/json" \
+          echo "Posting hash $COMMIT_SHA to $ENDPOINT_URL"
+          curl -v -X POST "$ENDPOINT_URL" \
             -H "bypass-tunnel-reminder: true" \
-            -d "{\"hash_id\": \"$COMMIT_SHA\"}"
+            -d "{\"hash_id\": \"${COMMIT_SHA}\"}"
