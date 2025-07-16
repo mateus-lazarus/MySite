@@ -19,7 +19,8 @@ jobs:
     steps:
       - name: Send commit SHA to endpoint
         run: |
-          echo "Posting hash $COMMIT_SHA to $ENDPOINT_URL"
-          curl --fail -X POST "$ENDPOINT_URL" \
+          echo "Sending to: ${{ secrets.WEBHOOK_URL }}"
+          curl -v -X POST ${{ secrets.WEBHOOK_URL }} \
+            -H "Content-Type: application/json" \
             -H "bypass-tunnel-reminder: true" \
-            -d "{\"hash_id\": \"${COMMIT_SHA}\"}"
+            -d "{\"hash_id\": \"${{ github.sha }}\"}"
