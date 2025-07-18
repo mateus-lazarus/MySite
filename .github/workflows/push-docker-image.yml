@@ -42,7 +42,12 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ env.IMAGE_NAME }}:${{ github.sha }}-${{ env.TIMESTAMP }}
+          tags: |
+            ${{ env.IMAGE_NAME }}:${{ github.sha }}-${{ env.TIMESTAMP }}
+            ${{ env.IMAGE_NAME }}:latest
 
       - name: Expose image digest
         run: echo "digest=${{ steps.build.outputs.digest }}" >> $GITHUB_OUTPUT
+
+
+# To see all packages pushed: https://github.com/users/<your-username>/packages
